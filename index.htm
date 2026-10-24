@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -19,7 +18,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Экран с конвертом */
         #envelope-screen {
             height: 100vh;
             display: flex;
@@ -85,7 +83,6 @@
             to { opacity: 0; visibility: hidden; transform: scale(1.1); }
         }
 
-        /* Экран с контентом */
         #main-screen {
             padding: 40px 20px;
             max-width: 600px;
@@ -239,6 +236,40 @@
             to { opacity: 1; }
         }
 
+        /* Стили для кнопки сюрприза */
+        .surprise-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(90deg, #f472b6, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .surprise-btn:active {
+            transform: scale(0.96);
+        }
+
+        .surprise-text {
+            display: block;
+            animation: popIn 0.5s ease;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
         /* Анимация для падающих сердечек */
         @keyframes fall {
             0% { transform: translateY(0) rotate(0deg); opacity: 1; }
@@ -270,6 +301,11 @@
             <p>Хочу слетать я снова с тобой в <span class="hidden-51">Мурманск</span>, хочу тепла, хоть там и холодно, ведь я там видел, как снег таял, когда ты шла и светилась, о счастье, радости, тепле, заботе, моя милашка, хочу, чтоб были мы с тобой всего до самой смерти.</p>
         </div>
 
+        <!-- Кнопка-сюрприз -->
+        <button class="surprise-btn" onclick="showSurprise()">
+            <span class="surprise-text" id="surprise-text">Нажми, если хочешь узнать секрет 💖</span>
+        </button>
+
         <!-- ПРИКОЛ С КАРТОЙ -->
         <div class="card-trick">
             <h3>Узнай свой гороскоп на сегодня 💳✨</h3>
@@ -291,6 +327,8 @@
     </div>
 
     <script>
+        var heartsInterval;
+
         function openEnvelope() {
             var envelopeScreen = document.getElementById('envelope-screen');
             var mainScreen = document.getElementById('main-screen');
@@ -301,6 +339,8 @@
                 envelopeScreen.style.display = 'none';
                 mainScreen.style.display = 'block';
                 
+                startHearts();
+
                 var paragraphs = document.querySelectorAll('.poem p');
                 var observer = new IntersectionObserver(function(entries) {
                     entries.forEach(function(entry) {
@@ -317,12 +357,10 @@
             }, 800);
         }
 
-        // Функция гороскопа
         function getHoroscope() {
             var cardNum = document.getElementById('card-num').value;
             var result = document.getElementById('horoscope-result');
             
-            // Проверяем, что ввели хоть что-то
             if (cardNum.length < 5) {
                 result.style.display = 'block';
                 result.style.color = '#ef4444';
@@ -330,7 +368,6 @@
                 return;
             }
 
-            // Список прикольных предсказаний
             var predictions = [
                 "Сегодня звезды говорят, что ты будешь самая красивая! 🌟",
                 "Твой любимый человек думает о тебе прямо сейчас. 💭",
@@ -340,39 +377,65 @@
                 "Тебя ждет теплый вечер в обнимку. 🤗"
             ];
 
-            // Выбираем случайное предсказание
             var randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
             
             result.style.display = 'block';
             result.style.color = '#8b5cf6';
-            
-            // Делаем вид, что "думаем"
             result.innerHTML = 'Анализируем звезды... ⏳';
+            
             setTimeout(function() {
                 result.innerHTML = randomPrediction;
             }, 1500);
         }
 
-        // Падающие сердечки
+        // Логика кнопки-сюрприза
+        function showSurprise() {
+            var surprises = [
+                "Ты самая красивая на свете! 😍",
+                "Я люблю твою улыбку! 🥰",
+                "Ты мой самый любимый человек! ❤️",
+                "С тобой каждый день как праздник! 🎉",
+                "Ты — мое самое большое счастье! ✨",
+                "Я скучаю по тебе каждую секунду! 🥺",
+                "Ты самая умная и заботливая! 🌸",
+                "Я хочу быть с тобой всегда! 💍"
+            ];
+            
+            var randomIndex = Math.floor(Math.random() * surprises.length);
+            var textElement = document.getElementById('surprise-text');
+            
+            // Меняем текст с анимацией
+            textElement.style.animation = 'none';
+            textElement.offsetHeight; // Триггер рефлоу для перезапуска анимации
+            textElement.style.animation = 'popIn 0.5s ease';
+            textElement.innerHTML = surprises[randomIndex];
+        }
+
+        // Создаем сердечко ИЗ ТВОЕЙ ГИФКИ
         function createHeart() {
-            var heart = document.createElement('div');
-            heart.innerHTML = '❤️';
+            var heart = document.createElement('img');
+            heart.src = 'https://i.postimg.cc/pdz30bdm/ee66c328e193e1154fef7631b754e366.gif';
             heart.style.position = 'fixed';
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.top = '-10vh';
-            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-            heart.style.opacity = Math.random() * 0.5 + 0.3;
-            heart.style.animation = 'fall ' + (Math.random() * 3 + 2) + 's linear';
+            heart.style.width = Math.random() * 30 + 20 + 'px';
+            heart.style.height = 'auto';
+            heart.style.opacity = Math.random() * 0.6 + 0.3;
+            heart.style.animation = 'fall ' + (Math.random() * 3 + 3) + 's linear';
             heart.style.zIndex = '999';
             heart.style.pointerEvents = 'none';
             document.body.appendChild(heart);
             
             setTimeout(function() {
                 heart.remove();
-            }, 5000);
+            }, 6000);
         }
 
-        setInterval(createHeart, 300);
+        function startHearts() {
+            if (!heartsInterval) {
+                heartsInterval = setInterval(createHeart, 400);
+            }
+        }
     </script>
 </body>
 </html>
