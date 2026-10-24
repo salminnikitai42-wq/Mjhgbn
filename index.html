@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для Анютки</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #dbeafe 0%, #fbcfe8 100%);
+            color: #333;
+            overflow-x: hidden;
+            background-image: url('https://i.postimg.cc/6Qm0Kq1n/heart-bg.png'); 
+            background-size: 100px;
+            min-height: 100vh;
+        }
+
+        /* Экран с конвертом */
+        #envelope-screen {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .envelope {
+            width: 250px;
+            height: 180px;
+            background: #fff;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(244, 114, 182, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 2px dashed #fbcfe8;
+        }
+
+        .envelope:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .heart-seal {
+            font-size: 50px;
+            animation: pulse 1.5s infinite;
+        }
+
+        .click-hint {
+            margin-top: 15px;
+            color: #db2777;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .fade-out {
+            animation: fadeOut 0.8s forwards;
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        /* Экран с контентом */
+        #main-screen {
+            padding: 40px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .photo-container {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-bottom: 40px;
+        }
+
+        .photo-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .poem p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+            font-weight: 500;
+        }
+
+        .poem p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hidden-51 {
+            position: relative;
+            color: transparent; 
+        }
+
+        .hidden-51::after {
+            content: '51';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10px;
+            color: rgba(0,0,0,0.05);
+        }
+
+        .meme-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .meme-container img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .footer-easter-egg {
+            margin-top: 50px;
+            padding-bottom: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(0,0,0,0.05);
+            transition: color 1s;
+        }
+
+        .footer-easter-egg:hover {
+            color: rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="envelope-screen">
+        <div class="envelope" onclick="openEnvelope()">
+            <div class="heart-seal">❤️</div>
+            <p class="click-hint">Нажми, чтобы открыть</p>
+        </div>
+    </div>
+
+    <div id="main-screen" style="display: none;">
+        <div class="photo-container">
+            <img src="https://i.postimg.cc/QxmVVwkK/0B9RIZhj3Uk.jpg" alt="Наше фото">
+        </div>
+        
+        <div class="poem">
+            <p>Привет, Анютка, мне снова нечего делать.</p>
+            <p>Это подарок для тебя.</p>
+            <p>Ты моя любовь, я тебя очень люблю, моя киса, без тебя так скучно и тоскливо.</p>
+            <p>Я совсем забыл, как мне писать стихи тому, кого я люблю.</p>
+            <p>Любовь для нас стала сложной, ведь прошли периоды цветов, букетов и заботы, настали холода, солнца стало меньше.</p>
+            <p>Но в моём сердце всегда тепло, там лежат твои слова о любви и страсти обо мне, люблю тебя, ты, бубочка моя чудесная.</p>
+            <p>Хочу слетать я снова в <span class="hidden-51">Мурманск</span>, хочу тепла, хоть там и холодно, ведь я там видел, как снег таял, когда ты шла и светилась, о счастье, радости, тепле, заботе, моя милашка, хочу, чтоб были мы с тобой всего до самой смерти.</p>
+        </div>
+
+        <div class="meme-container">
+            <img src="https://i.postimg.cc/9Qf09bJx/57bcbe7ac6aa03f18316156181e2c00c.jpg" alt="Мурманск 51">
+        </div>
+
+        <div class="footer-easter-egg">
+            <p>51°<br>Холодный город Мурманск...</p>
+        </div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            var envelopeScreen = document.getElementById('envelope-screen');
+            var mainScreen = document.getElementById('main-screen');
+            
+            envelopeScreen.classList.add('fade-out');
+            
+            setTimeout(function() {
+                envelopeScreen.style.display = 'none';
+                mainScreen.style.display = 'block';
+                
+                var paragraphs = document.querySelectorAll('.poem p');
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                paragraphs.forEach(function(p) {
+                    observer.observe(p);
+                });
+                
+            }, 800);
+        }
+    </script>
+</body>
+  </html>
