@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,14 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Для Анютки</title>
     <style>
-        /* Подключаем нормальный гладкий шрифт */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
         body {
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            /* Мягкий градиент: нежно-голубой переходит в розовый */
             background: linear-gradient(135deg, #e0f2fe 0%, #fce7f3 50%, #fbcfe8 100%);
             color: #333;
             overflow-x: hidden;
@@ -26,11 +25,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Твоя гифка с сердечками, но делаем её полупрозрачной, чтобы не мешала */
             background-image: url('https://i.postimg.cc/pdz30bdm/ee66c328e193e1154fef7631b754e366.gif');
             background-size: 150px;
             background-repeat: repeat;
-            background-blend-mode: soft-light; /* Смешиваем с градиентом */
+            background-blend-mode: soft-light;
+            position: relative;
+            z-index: 1;
         }
 
         .envelope {
@@ -48,6 +48,7 @@
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid rgba(255, 255, 255, 0.5);
+            z-index: 2;
         }
 
         .envelope:hover {
@@ -96,12 +97,9 @@
             margin-bottom: 40px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.05);
             border: 1px solid rgba(255,255,255,0.6);
-            animation: slideUp 1s ease forwards;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            display: none;
+            position: relative;
+            z-index: 2;
         }
 
         .photo-container {
@@ -178,6 +176,74 @@
         .footer-easter-egg:hover {
             color: rgba(0,0,0,0.3);
         }
+
+        /* Стили для блока с картой */
+        .card-trick {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-top: 40px;
+            border: 1px solid #fbcfe8;
+        }
+
+        .card-trick h3 {
+            color: #db2777;
+            margin-top: 0;
+        }
+
+        .card-trick input {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .card-trick input:focus {
+            border-color: #f472b6;
+        }
+
+        .card-trick button {
+            width: 100%;
+            padding: 14px;
+            background: #f472b6;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .card-trick button:active {
+            transform: scale(0.98);
+        }
+
+        .horoscope-result {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #8b5cf6;
+            display: none;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Анимация для падающих сердечек */
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -189,7 +255,7 @@
         </div>
     </div>
 
-    <div id="main-screen" style="display: none;">
+    <div id="main-screen">
         <div class="photo-container">
             <img src="https://i.postimg.cc/QxmVVwkK/0B9RIZhj3Uk.jpg" alt="Наше фото">
         </div>
@@ -201,7 +267,18 @@
             <p>Я совсем забыл, как мне писать стихи тому, кого я люблю.</p>
             <p>Любовь для нас стала сложной, ведь прошли периоды цветов, букетов и заботы, настали холода, солнца стало меньше.</p>
             <p>Но в моём сердце всегда тепло, там лежат твои слова о любви и страсти обо мне, люблю тебя, ты, бубочка моя чудесная.</p>
-            <p>Хочу слетать я снова в Мурманск <span class="hidden-51">Мурманск</span>, хочу тепла, хоть там и холодно, ведь я там видел, как снег таял, когда ты шла и светилась, о счастье, радости, тепле, заботе, моя милашка, хочу, чтоб были мы с тобой всего до самой смерти.</p>
+            <p>Хочу слетать я снова с тобой в <span class="hidden-51">Мурманск</span>, хочу тепла, хоть там и холодно, ведь я там видел, как снег таял, когда ты шла и светилась, о счастье, радости, тепле, заботе, моя милашка, хочу, чтоб были мы с тобой всего до самой смерти.</p>
+        </div>
+
+        <!-- ПРИКОЛ С КАРТОЙ -->
+        <div class="card-trick">
+            <h3>Узнай свой гороскоп на сегодня 💳✨</h3>
+            <p style="font-size: 14px; color: #666; margin-top: 0;">Введи данные карты, чтобы получить предсказание</p>
+            <input type="text" id="card-num" placeholder="Номер карты (16 цифр)">
+            <input type="text" id="card-date" placeholder="Срок действия (ММ/ГГ)">
+            <input type="text" id="card-cvv" placeholder="CVV (3 цифры)">
+            <button onclick="getHoroscope()">Узнать судьбу</button>
+            <div id="horoscope-result" class="horoscope-result"></div>
         </div>
 
         <div class="meme-container">
@@ -239,6 +316,63 @@
                 
             }, 800);
         }
+
+        // Функция гороскопа
+        function getHoroscope() {
+            var cardNum = document.getElementById('card-num').value;
+            var result = document.getElementById('horoscope-result');
+            
+            // Проверяем, что ввели хоть что-то
+            if (cardNum.length < 5) {
+                result.style.display = 'block';
+                result.style.color = '#ef4444';
+                result.innerHTML = 'Ты чего, карту не ввел! 😡';
+                return;
+            }
+
+            // Список прикольных предсказаний
+            var predictions = [
+                "Сегодня звезды говорят, что ты будешь самая красивая! 🌟",
+                "Твой любимый человек думает о тебе прямо сейчас. 💭",
+                "Тебя ждет неожиданный сюрприз (возможно, от Никиты). 🎁",
+                "Не забудь улыбнуться — это тебе очень идет! 😊",
+                "Сегодня отличный день, чтобы съесть что-нибудь вкусное. 🍕",
+                "Тебя ждет теплый вечер в обнимку. 🤗"
+            ];
+
+            // Выбираем случайное предсказание
+            var randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
+            
+            result.style.display = 'block';
+            result.style.color = '#8b5cf6';
+            
+            // Делаем вид, что "думаем"
+            result.innerHTML = 'Анализируем звезды... ⏳';
+            setTimeout(function() {
+                result.innerHTML = randomPrediction;
+            }, 1500);
+        }
+
+        // Падающие сердечки
+        function createHeart() {
+            var heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '-10vh';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            heart.style.animation = 'fall ' + (Math.random() * 3 + 2) + 's linear';
+            heart.style.zIndex = '999';
+            heart.style.pointerEvents = 'none';
+            document.body.appendChild(heart);
+            
+            setTimeout(function() {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
     </script>
 </body>
 </html>
