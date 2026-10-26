@@ -8,6 +8,7 @@
 <title>Forma — сайты с характером</title>
 
 <style>
+/* ========== СТИЛИ FORMA ========== */
 :root {
   --bg:#111114;
   --card:#1b1b20;
@@ -68,7 +69,7 @@ h2{font-size:clamp(30px,5vw,46px);line-height:1.1;letter-spacing:-1.5px;margin:8
 .project p{font-size:14px;color:var(--muted);margin:0 0 20px}
 .project-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto}
 .price{font-weight:900;font-size:17px}
-.more{border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--text);padding:9px 12px;cursor:pointer}
+.more{border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--text);padding:9px 12px;cursor:pointer;transition: border-color .2s}
 .more:hover{border-color:var(--accent)}
 .pricing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .plan{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
@@ -119,177 +120,187 @@ footer{margin-top:60px;padding:28px 0;border-top:1px solid var(--line);color:var
 </head>
 
 <body>
-<header>
-  <div class="container nav">
-    <a class="logo" href="#home">forma<span>.</span></a>
-    <a class="contact" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Написать в MAX ↗</a>
-  </div>
-</header>
 
-<main>
-  <section class="hero" id="home">
-    <div class="container">
-      <div class="eyebrow">Дизайн · Разработка · Идеи</div>
-      <h1>Сайты, которые<br>говорят <span>за тебя.</span></h1>
-      <p>Создаю стильные сайты для проектов, бизнеса и особенных моментов. Не шаблон ради шаблона, а страница с характером.</p>
-      <div class="actions">
-        <a class="btn primary" href="#catalog">Выбрать сайт ↘</a>
-        <a class="btn secondary" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Обсудить проект</a>
-      </div>
-      <div class="trust">
-        <span class="pill">✦ Индивидуальный подход</span>
-        <span class="pill">↗ Адаптация под телефон</span>
-        <span class="pill">♡ С вниманием к деталям</span>
-      </div>
+<!-- ОБЕРТКА КАТАЛОГА FORMA -->
+<div id="forma-site">
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home">forma<span>.</span></a>
+      <a class="contact" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Написать в MAX ↗</a>
     </div>
-  </section>
+  </header>
 
-  <section id="catalog">
-    <div class="container">
-      <div class="section-top">
-        <div>
-          <div class="eyebrow">Каталог работ</div>
-          <h2>Что создадим?</h2>
-          <p>Выбери направление — обсудим детали и стиль.</p>
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="eyebrow">Дизайн · Разработка · Идеи</div>
+        <h1>Сайты, которые<br>говорят <span>за тебя.</span></h1>
+        <p>Создаю стильные сайты для проектов, бизнеса и особенных моментов. Не шаблон ради шаблона, а страница с характером.</p>
+        <div class="actions">
+          <a class="btn primary" href="#catalog">Выбрать сайт ↘</a>
+          <a class="btn secondary" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Обсудить проект</a>
+        </div>
+        <div class="trust">
+          <span class="pill">✦ Индивидуальный подход</span>
+          <span class="pill">↗ Адаптация под телефон</span>
+          <span class="pill">♡ С вниманием к деталям</span>
         </div>
       </div>
+    </section>
 
-      <div class="filters" aria-label="Фильтр проектов">
-        <button class="filter active" data-filter="all">Все проекты</button>
-        <button class="filter" data-filter="personal">Личное</button>
-        <button class="filter" data-filter="business">Бизнес</button>
-        <button class="filter" data-filter="events">События</button>
-        <button class="filter" data-filter="study">Обучение</button>
-      </div>
-
-      <div class="grid" id="projects">
-        <article class="project" data-category="personal" data-title="Романтическая страница" data-description="Персональная страница для любимого человека: ваше послание, фотографии, памятные даты и тёплые детали. Можно сделать сюрпризом или подарком." data-price="от 299 ₽">
-          <div class="preview"><div class="sample"><small>для самого важного</small>Ты — моё<br>любимое место ♡</div></div>
-          <div class="project-body"><span class="tag">Личное · Романтика</span><h3>Романтическая страница</h3><p>Красивое признание, которое останется с вами.</p><div class="project-bottom"><span class="price">от 299 ₽</span><button class="more">Подробнее ↗</button></div></div>
-        </article>
-
-        <article class="project" data-category="events" data-title="Свадебное приглашение" data-description="Онлайн-приглашение на свадьбу с именами пары, датой, программой дня, местом проведения и важной информацией для гостей." data-price="от 599 ₽">
-          <div class="preview"><div class="sample"><small>the beginning of forever</small>Александр<br>& Анастасия</div></div>
-          <div class="project-body"><span class="tag">События · Свадьба</span><h3>Свадебное приглашение</h3><p>Элегантный способ пригласить близких.</p><div class="project-bottom"><span class="price">от 599 ₽</span><button class="more">Подробнее ↗</button></div></div>
-        </article>
-
-        <article class="project" data-category="study" data-title="Сайт репетитора" data-description="Страница преподавателя с описанием занятий, предметами, форматами обучения, преимуществами, ценами и контактами для записи." data-price="от 1 490 ₽">
-          <div class="preview"><div class="sample"><small>учись уверенно</small>Знания,<br>которые растут.</div></div>
-          <div class="project-body"><span class="tag">Обучение · Услуги</span><h3>Сайт репетитора</h3><p>Представь себя и находи новых учеников.</p><div class="project-bottom"><span class="price">от 1 490 ₽</span><button class="more">Подробнее ↗</button></div></div>
-        </article>
-
-        <article class="project" data-category="business" data-title="Сайт для мастера" data-description="Портфолио специалиста: услуги, примеры работ, цены, отзывы и удобная связь с клиентами." data-price="от 1 490 ₽">
-          <div class="preview"><div class="sample"><small>твоё мастерство</small>Работа,<br>говорящая сама.</div></div>
-          <div class="project-body"><span class="tag">Бизнес · Портфолио</span><h3>Сайт для мастера</h3><p>Покажи услуги и лучшие работы в одном месте.</p><div class="project-bottom"><span class="price">от 1 490 ₽</span><button class="more">Подробнее ↗</button></div></div>
-        </article>
-
-        <article class="project" data-category="business" data-title="Сайт компании" data-description="Презентационная страница компании с описанием услуг, преимуществами, блоком о команде и контактами. Структура подбирается под конкретный бизнес." data-price="от 1 990 ₽">
-          <div class="preview"><div class="sample"><small>создано для роста</small>Бизнес<br>нового уровня.</div></div>
-          <div class="project-body"><span class="tag">Бизнес · Компания</span><h3>Сайт компании</h3><p>Понятно расскажи о своём деле клиентам.</p><div class="project-bottom"><span class="price">от 1 990 ₽</span><button class="more">Подробнее ↗</button></div></div>
-        </article>
-
-        <article class="project" data-category="events" data-title="Приглашение на праздник" data-description="Яркая персональная страница для дня рождения, вечеринки или семейного события: дата, адрес, программа и детали встречи." data-price="от 299 ₽">
-          <div class="preview"><div class="sample"><small>save the date</small>Это будет<br>особенный день!</div></div>
-          <div class="project-body"><span class="tag">События · Праздник</span><h3>Приглашение на праздник</h3><p>Собери всех важных людей красиво.</p><div class="project-bottom"><span class="price">от 299 ₽</span><button class="more">Подробнее ↗</button></div></div>
-        </article>
-
-        <article class="project" data-category="personal" data-title="Личное портфолио" data-description="Современная персональная страница о тебе: навыки, проекты, достижения, фотографии и способы связи. Подойдёт для творческих специалистов и начинающих." data-price="от 1 490 ₽">
-          <div class="preview"><div class="sample"><small>познакомимся?</small>Это больше,<br>чем резюме.</div></div>
-          <div class="project-body"><span class="tag">Личное · Портфолио</span><h3>Личное портфолио</h3><p>Расскажи о себе и своих возможностях.</p><div class="project-bottom"><span class="price">от 1 490 ₽</span><button class="more">Подробнее ↗</button></div></div>
-        </article>
-
-        <article class="project" data-category="business" data-title="Сайт услуги" data-description="Одностраничный сайт для отдельной услуги или предложения: проблема клиента, решение, выгоды, этапы работы и кнопка связи." data-price="от 990 ₽">
-          <div class="preview"><div class="sample"><small>просто и понятно</small>Твоя услуга.<br>Твой стиль.</div></div>
-          <div class="project-body"><span class="tag">Бизнес · Услуги</span><h3>Сайт услуги</h3><p>Сфокусируй внимание на главном предложении.</p><div class="project-bottom"><span class="price">от 990 ₽</span><button class="more">Подробнее ↗</button></div></div>
-        </article>
-
-        <article class="project" data-category="study" data-title="Образовательный проект" data-description="Страница курса, учебного проекта или клуба: программа, расписание, информация для участников и контакты организатора." data-price="от 1 490 ₽">
-          <div class="preview"><div class="sample"><small>начни сегодня</small>Новые навыки.<br>Новые горизонты.</div></div>
-          <div class="project-body"><span class="tag">Обучение · Курсы</span><h3>Образовательный проект</h3><p>Представь курс или обучение в сети.</p><div class="project-bottom"><span class="price">от 1 490 ₽</span><button class="more">Подробнее ↗</button></div></div>
-        </article>
-      </div>
-      <div id="empty">В этой категории пока нет проектов.</div>
-    </div>
-  </section>
-
-  <section id="prices">
-    <div class="container">
-      <div class="eyebrow">Прозрачно и понятно</div>
-      <h2>Выбери свой формат</h2>
-      <p class="muted">Итоговая стоимость зависит от объёма и функций сайта.</p>
-      <div class="pricing">
-        <div class="plan">
-          <span class="tag">Старт</span><h3>Мини-сайт</h3>
-          <div class="amount">от 299 ₽</div>
-          <p>Для личной идеи или небольшого события.</p>
-          <ul><li>Одна страница</li><li>Индивидуальные тексты</li><li>Версия для телефона</li></ul>
-          <a class="btn secondary order" data-plan="Мини-сайт" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Обсудить заказ</a>
+    <section id="catalog">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <div class="eyebrow">Каталог работ</div>
+            <h2>Что создадим?</h2>
+            <p>Выбери направление — обсудим детали и стиль.</p>
+          </div>
         </div>
-        <div class="plan featured">
-          <span class="tag">Популярный выбор</span><h3>Сайт-портфолио</h3>
-          <div class="amount">от 1 490 ₽</div>
-          <p>Для специалиста, автора или небольшого проекта.</p>
-          <ul><li>Продуманная структура</li><li>Несколько смысловых блоков</li><li>Кнопки связи и контакты</li></ul>
-          <a class="btn primary order" data-plan="Сайт-портфолио" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Обсудить заказ</a>
+
+        <div class="filters" aria-label="Фильтр проектов">
+          <button class="filter active" data-filter="all">Все проекты</button>
+          <button class="filter" data-filter="personal">Личное</button>
+          <button class="filter" data-filter="business">Бизнес</button>
+          <button class="filter" data-filter="events">События</button>
+          <button class="filter" data-filter="study">Обучение</button>
         </div>
-        <div class="plan">
-          <span class="tag">Индивидуально</span><h3>Сайт для бизнеса</h3>
-          <div class="amount">от 1 990 ₽</div>
-          <p>Для компании, услуги или более крупной идеи.</p>
-          <ul><li>Индивидуальный дизайн</li><li>Структура под задачу</li><li>Обсуждение дополнительных функций</li></ul>
-          <a class="btn secondary order" data-plan="Сайт для бизнеса" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Обсудить заказ</a>
+
+        <div class="grid" id="projects">
+          <article class="project" data-category="personal" data-title="Романтическая страница" data-description="Персональная страница для любимого человека: ваше послание, фотографии, памятные даты и тёплые детали. Можно сделать сюрпризом или подарком." data-price="от 299 ₽">
+            <div class="preview"><div class="sample"><small>для самого важного</small>Ты — моё<br>любимое место ♡</div></div>
+            <div class="project-body"><span class="tag">Личное · Романтика</span><h3>Романтическая страница</h3><p>Красивое признание, которое останется с вами.</p><div class="project-bottom"><span class="price">от 299 ₽</span><button class="more">Подробнее ↗</button></div></div>
+          </article>
+
+          <article class="project" data-category="events" data-title="Свадебное приглашение" data-description="Онлайн-приглашение на свадьбу с именами пары, датой, программой дня, местом проведения и важной информацией для гостей." data-price="от 599 ₽">
+            <div class="preview"><div class="sample"><small>the beginning of forever</small>Александр<br>& Анастасия</div></div>
+            <div class="project-body"><span class="tag">События · Свадьба</span><h3>Свадебное приглашение</h3><p>Элегантный способ пригласить близких.</p><div class="project-bottom"><span class="price">от 599 ₽</span><button class="more">Подробнее ↗</button></div></div>
+          </article>
+
+          <article class="project" data-category="study" data-title="Сайт репетитора" data-description="Страница преподавателя с описанием занятий, предметами, форматами обучения, преимуществами, ценами и контактами для записи." data-price="от 1 490 ₽">
+            <div class="preview"><div class="sample"><small>учись уверенно</small>Знания,<br>которые растут.</div></div>
+            <div class="project-body"><span class="tag">Обучение · Услуги</span><h3>Сайт репетитора</h3><p>Представь себя и находи новых учеников.</p><div class="project-bottom"><span class="price">от 1 490 ₽</span><button class="more">Подробнее ↗</button></div></div>
+          </article>
+
+          <article class="project" data-category="business" data-title="Сайт для мастера" data-description="Портфолио специалиста: услуги, примеры работ, цены, отзывы и удобная связь с клиентами." data-price="от 1 490 ₽">
+            <div class="preview"><div class="sample"><small>твоё мастерство</small>Работа,<br>говорящая сама.</div></div>
+            <div class="project-body"><span class="tag">Бизнес · Портфолио</span><h3>Сайт для мастера</h3><p>Покажи услуги и лучшие работы в одном месте.</p><div class="project-bottom"><span class="price">от 1 490 ₽</span><button class="more">Подробнее ↗</button></div></div>
+          </article>
+
+          <article class="project" data-category="business" data-title="Сайт компании" data-description="Презентационная страница компании с описанием услуг, преимуществами, блоком о команде и контактами. Структура подбирается под конкретный бизнес." data-price="от 1 990 ₽">
+            <div class="preview"><div class="sample"><small>создано для роста</small>Бизнес<br>нового уровня.</div></div>
+            <div class="project-body"><span class="tag">Бизнес · Компания</span><h3>Сайт компании</h3><p>Понятно расскажи о своём деле клиентам.</p><div class="project-bottom"><span class="price">от 1 990 ₽</span><button class="more">Подробнее ↗</button></div></div>
+          </article>
+
+          <article class="project" data-category="events" data-title="Приглашение на праздник" data-description="Яркая персональная страница для дня рождения, вечеринки или семейного события: дата, адрес, программа и детали встречи." data-price="от 299 ₽">
+            <div class="preview"><div class="sample"><small>save the date</small>Это будет<br>особенный день!</div></div>
+            <div class="project-body"><span class="tag">События · Праздник</span><h3>Приглашение на праздник</h3><p>Собери всех важных людей красиво.</p><div class="project-bottom"><span class="price">от 299 ₽</span><button class="more">Подробнее ↗</button></div></div>
+          </article>
+
+          <!-- КАРТОЧКА С ПОРТФОЛИО -->
+          <article class="project" data-category="personal" data-title="Личное портфолио" data-description="Современная персональная страница о тебе: навыки, проекты, достижения, фотографии и способы связи. Подойдёт для творческих специалистов и начинающих." data-price="от 1 490 ₽">
+            <div class="preview"><div class="sample"><small>познакомимся?</small>Это больше,<br>чем резюме.</div></div>
+            <div class="project-body"><span class="tag">Личное · Портфолио</span><h3>Личное портфолио</h3><p>Расскажи о себе и своих возможностях.</p><div class="project-bottom"><span class="price">от 1 490 ₽</span><a href="javascript:void(0)" class="more" onclick="openPortfolio()">Посмотреть пример ↗</a></div></div>
+          </article>
+
+          <article class="project" data-category="business" data-title="Сайт услуги" data-description="Одностраничный сайт для отдельной услуги или предложения: проблема клиента, решение, выгоды, этапы работы и кнопка связи." data-price="от 990 ₽">
+            <div class="preview"><div class="sample"><small>просто и понятно</small>Твоя услуга.<br>Твой стиль.</div></div>
+            <div class="project-body"><span class="tag">Бизнес · Услуги</span><h3>Сайт услуги</h3><p>Сфокусируй внимание на главном предложении.</p><div class="project-bottom"><span class="price">от 990 ₽</span><button class="more">Подробнее ↗</button></div></div>
+          </article>
+
+          <article class="project" data-category="study" data-title="Образовательный проект" data-description="Страница курса, учебного проекта или клуба: программа, расписание, информация для участников и контакты организатора." data-price="от 1 490 ₽">
+            <div class="preview"><div class="sample"><small>начни сегодня</small>Новые навыки.<br>Новые горизонты.</div></div>
+            <div class="project-body"><span class="tag">Обучение · Курсы</span><h3>Образовательный проект</h3><p>Представь курс или обучение в сети.</p><div class="project-bottom"><span class="price">от 1 490 ₽</span><button class="more">Подробнее ↗</button></div></div>
+          </article>
+        </div>
+        <div id="empty">В этой категории пока нет проектов.</div>
+      </div>
+    </section>
+
+    <section id="prices">
+      <div class="container">
+        <div class="eyebrow">Прозрачно и понятно</div>
+        <h2>Выбери свой формат</h2>
+        <p class="muted">Итоговая стоимость зависит от объёма и функций сайта.</p>
+        <div class="pricing">
+          <div class="plan">
+            <span class="tag">Старт</span><h3>Мини-сайт</h3>
+            <div class="amount">от 299 ₽</div>
+            <p>Для личной идеи или небольшого события.</p>
+            <ul><li>Одна страница</li><li>Индивидуальные тексты</li><li>Версия для телефона</li></ul>
+            <a class="btn secondary order" data-plan="Мини-сайт" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Обсудить заказ</a>
+          </div>
+          <div class="plan featured">
+            <span class="tag">Популярный выбор</span><h3>Сайт-портфолио</h3>
+            <div class="amount">от 1 490 ₽</div>
+            <p>Для специалиста, автора или небольшого проекта.</p>
+            <ul><li>Продуманная структура</li><li>Несколько смысловых блоков</li><li>Кнопки связи и контакты</li></ul>
+            <a class="btn primary order" data-plan="Сайт-портфолио" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Обсудить заказ</a>
+          </div>
+          <div class="plan">
+            <span class="tag">Индивидуально</span><h3>Сайт для бизнеса</h3>
+            <div class="amount">от 1 990 ₽</div>
+            <p>Для компании, услуги или более крупной идеи.</p>
+            <ul><li>Индивидуальный дизайн</li><li>Структура под задачу</li><li>Обсуждение дополнительных функций</li></ul>
+            <a class="btn secondary order" data-plan="Сайт для бизнеса" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Обсудить заказ</a>
+          </div>
+        </div>
+        <p class="muted" style="font-size:12px;margin-top:16px">Цены указаны ориентировочно. Домен, хостинг и платные сторонние сервисы могут оплачиваться отдельно.</p>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="eyebrow">От идеи до результата</div>
+        <h2>Как всё работает</h2>
+        <div class="steps">
+          <div class="step"><b>01</b><h3>Знакомимся</h3><p>Ты рассказываешь о своей идее и цели.</p></div>
+          <div class="step"><b>02</b><h3>Планируем</h3><p>Обсуждаем внешний вид, содержание и цену.</p></div>
+          <div class="step"><b>03</b><h3>Создаём</h3><p>Собираем страницу и проверяем её на телефоне.</p></div>
+          <div class="step"><b>04</b><h3>Запускаем</h3><p>Передаём результат и объясняем дальнейшие шаги.</p></div>
         </div>
       </div>
-      <p class="muted" style="font-size:12px;margin-top:16px">Цены указаны ориентировочно. Домен, хостинг и платные сторонние сервисы могут оплачиваться отдельно.</p>
-    </div>
-  </section>
+    </section>
 
-  <section id="process">
-    <div class="container">
-      <div class="eyebrow">От идеи до результата</div>
-      <h2>Как всё работает</h2>
-      <div class="steps">
-        <div class="step"><b>01</b><h3>Знакомимся</h3><p>Ты рассказываешь о своей идее и цели.</p></div>
-        <div class="step"><b>02</b><h3>Планируем</h3><p>Обсуждаем внешний вид, содержание и цену.</p></div>
-        <div class="step"><b>03</b><h3>Создаём</h3><p>Собираем страницу и проверяем её на телефоне.</p></div>
-        <div class="step"><b>04</b><h3>Запускаем</h3><p>Передаём результат и объясняем дальнейшие шаги.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- НОВЫЙ БЛОК О НАС -->
-  <section id="about">
-    <div class="container">
-      <div class="cta">
-        <div>
-          <div class="eyebrow">О нас по-человечески</div>
-          <h2>Небольшая команда.<br>Большие идеи.</h2>
-          <p>Мы — небольшая команда из двух человек, развиваемся, учимся и помогаем воплощать идеи в сайты. Делаем доступные цены, потому что хотим, чтобы красивые и удобные сайты были не только у крупных компаний, но и у обычных людей, начинающих специалистов и небольшого бизнеса.</p>
-          <p>Сроки обсуждаем честно, потому что каждый заказ разный: открытка делается быстро, а сложный сайт — дольше. Мы не обещаем сделать за 5 минут, но всегда на связи и работаем на результат.</p>
+    <section id="about">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <div class="eyebrow">О нас по-человечески</div>
+            <h2>Небольшая команда.<br>Большие идеи.</h2>
+            <p>Мы — небольшая команда из двух человек, развиваемся, учимся и помогаем воплощать идеи в сайты. Делаем доступные цены, потому что хотим, чтобы красивые и удобные сайты были не только у крупных компаний, но и у обычных людей, начинающих специалистов и небольшого бизнеса.</p>
+            <p>Сроки обсуждаем честно, потому что каждый заказ разный: открытка делается быстро, а сложный сайт — дольше. Мы не обещаем сделать за 5 минут, но всегда на связи и работаем на результат.</p>
+          </div>
+          <a class="btn primary" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Обсудить свой проект ↗</a>
         </div>
-        <a class="btn primary" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Обсудить свой проект ↗</a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact">
-    <div class="container">
-      <div class="cta">
-        <div><div class="eyebrow">Есть идея?</div><h2>Давай создадим<br>что-то классное.</h2><p>Напиши мне в MAX. Расскажи, какой сайт тебе нужен — вместе подберём формат и обсудим стоимость.</p></div>
-        <a class="btn primary" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Связаться в MAX ↗</a>
+    <section id="contact">
+      <div class="container">
+        <div class="cta">
+          <div><div class="eyebrow">Есть идея?</div><h2>Давай создадим<br>что-то классное.</h2><p>Напиши мне в MAX. Расскажи, какой сайт тебе нужен — вместе подберём формат и обсудим стоимость.</p></div>
+          <a class="btn primary" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Связаться в MAX ↗</a>
+        </div>
       </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <a class="logo" href="#home">forma<span>.</span></a>
+      <span>Сайты с характером · 2026</span>
+      <a href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Связаться ↗</a>
     </div>
-  </section>
-</main>
+  </footer>
+</div>
 
-<footer>
-  <div class="container footer-row">
-    <a class="logo" href="#home">forma<span>.</span></a>
-    <span>Сайты с характером · 2026</span>
-    <a href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Связаться ↗</a>
-  </div>
-</footer>
+<!-- ОБЕРТКА ПОРТФОЛИО (IFRAME) -->
+<div id="portfolio-site" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 99999; background: #101010;">
+  <iframe id="portfolio-iframe" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
 
+<!-- МОДАЛЬНОЕ ОКНО FORMA -->
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-box">
     <div class="modal-head"><div><span class="tag" id="modalTag">Проект</span><h3 id="modalTitle">Название</h3></div><button class="close" id="closeModal" aria-label="Закрыть">✕</button></div>
@@ -299,7 +310,359 @@ footer{margin-top:60px;padding:28px 0;border-top:1px solid var(--line);color:var
   </div>
 </div>
 
+<!-- ШАБЛОН ДЛЯ САЙТА НИКИТЫ (НЕ ВИДЕН ПОЛЬЗОВАТЕЛЮ) -->
+<script type="text/html" id="portfolio-template">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101010">
+<title>Никита — личное портфолио</title>
+<style>
+:root{--bg:#101010;--panel:#181818;--text:#f4f1eb;--muted:#a6a39e;--accent:#d5ff3f;--line:rgba(255,255,255,.12);}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1160px,calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(16,16,16,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nav-left{display:flex;align-items:center;gap:20px;}
+.back-btn{font-size:11px;text-transform:uppercase;letter-spacing:1px;border:1px solid var(--line);padding:7px 12px;border-radius:4px;font-weight:800;transition:all .2s;color:var(--muted);}
+.back-btn:hover{border-color:var(--accent);color:var(--accent);}
+.brand{font-size:24px;font-weight:950;letter-spacing:-1.5px}
+.brand span{color:var(--accent)}
+.navlinks{display:flex;gap:25px;font-size:13px;color:var(--muted)}
+.navlinks a:hover{color:var(--accent)}
+.menu-btn{display:none;background:none;color:white;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.hero{padding:65px 0 85px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--accent);font-weight:800}
+h1{font-size:clamp(52px,8vw,104px);line-height:.92;letter-spacing:-6px;margin:22px 0}
+h1 span{color:var(--accent)}
+.hero-sub{font-size:18px;color:var(--muted);max-width:500px}
+.buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:6px;font-weight:800;font-size:13px;border:1px solid var(--line);transition:.2s}
+.btn.primary{background:var(--accent);color:#111;border-color:var(--accent)}
+.btn:hover{transform:translateY(-2px)}
+.btn.secondary:hover{border-color:var(--accent)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:30px;color:var(--muted);font-size:12px}
+.hero-meta span:before{content:"↗ ";color:var(--accent)}
+.portrait-wrap{position:relative;max-width:470px;margin-left:auto;width:100%}
+.portrait-frame{aspect-ratio:4/5;position:relative;background:#262626;overflow:hidden;border-radius:4px}
+.portrait-frame img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(12%)}
+.portrait-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.35),transparent 45%);pointer-events:none}
+.photo-label{position:absolute;bottom:18px;left:18px;z-index:1;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+.photo-index{position:absolute;right:-12px;top:22px;background:var(--accent);color:#111;padding:12px 15px;font-weight:900;font-size:12px}
+.decor{position:absolute;width:90px;height:90px;border:1px solid var(--accent);right:-25px;bottom:-25px;z-index:-1}
+.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:15px 0;white-space:nowrap;color:var(--accent);font-weight:900;letter-spacing:3px;font-size:12px}
+.ticker-inner{display:flex;justify-content:space-around;gap:30px}
+section{padding:90px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:35px}
+.section-number{color:var(--accent);font-size:12px;letter-spacing:2px;font-weight:800}
+h2{font-size:clamp(35px,5vw,62px);letter-spacing:-2.5px;line-height:1.05;margin:12px 0}
+.section-intro{max-width:420px;color:var(--muted);font-size:14px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.about-copy{font-size:19px;line-height:1.8}
+.about-copy strong{color:var(--accent)}
+.about-note{border-left:2px solid var(--accent);padding:4px 0 4px 20px;color:var(--muted);font-size:14px;margin-top:25px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.stat{background:var(--panel);border:1px solid var(--line);padding:24px;min-height:135px}
+.stat strong{display:block;font-size:32px;letter-spacing:-1px;color:var(--accent)}
+.stat span{font-size:12px;color:var(--muted)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.skill{background:var(--panel);border:1px solid var(--line);padding:24px;min-height:190px}
+.skill-icon{font-size:24px;margin-bottom:20px}
+.skill h3{margin:0 0 10px;font-size:18px}
+.skill p{font-size:13px;color:var(--muted);margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.tag{border:1px solid var(--line);border-radius:3px;padding:5px 8px;font-size:10px;color:var(--muted)}
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.project{background:var(--panel);border:1px solid var(--line);overflow:hidden}
+.project-visual{height:260px;padding:25px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.visual-resume{background:#d7ff4a;color:#141414}
+.visual-resume .mock{width:78%;background:#151515;color:#f5f5f5;padding:22px;transform:rotate(-3deg);box-shadow:0 20px 50px #0004}
+.mock .mock-small{font-size:9px;letter-spacing:2px;color:#d7ff4a}
+.mock .mock-big{font-size:34px;line-height:1;font-weight:950;letter-spacing:-2px;margin:12px 0}
+.mock .mock-line{height:5px;background:#555;margin:8px 0;width:80%}
+.visual-forma{background:#242127;color:white}
+.forma-card{width:83%;padding:25px;background:#111114;border:1px solid #454047;transform:rotate(2deg);box-shadow:0 20px 50px #0006}
+.forma-card .f-logo{font-size:24px;font-weight:900}
+.forma-card .f-logo span{color:#ff765f}
+.forma-card .f-title{font-size:28px;font-weight:900;line-height:1.05;margin:20px 0}
+.forma-card .f-button{display:inline-block;background:#ff765f;color:#111;padding:8px 12px;font-size:10px;font-weight:900}
+.visual-love{background:#ead9d2;color:#432a32}
+.love-card{width:80%;padding:28px;background:#f9eee7;text-align:center;box-shadow:0 15px 40px #0002;transform:rotate(-2deg)}
+.love-card .heart{font-size:30px;color:#a8495d}
+.love-card h3{font-family:Georgia,serif;font-size:30px;line-height:1.1;margin:12px 0}
+.love-card p{font-size:10px}
+.visual-tutor{background:#dfe9f3;color:#1b334b}
+.tutor-card{width:85%;background:#fff;padding:22px;box-shadow:0 15px 40px #0002}
+.tutor-card .tutor-top{font-size:9px;letter-spacing:2px;color:#537caa}
+.tutor-card h3{font-size:27px;line-height:1.05;margin:12px 0}
+.tutor-card p{font-size:10px}
+.tutor-card .tutor-button{display:inline-block;background:#1c4266;color:white;padding:8px 12px;font-size:9px}
+.project-info{padding:22px}
+.project-top{display:flex;justify-content:space-between;gap:15px;align-items:start}
+.project h3{font-size:20px;margin:0}
+.project-type{font-size:10px;color:var(--accent);letter-spacing:1px;text-transform:uppercase}
+.project-info p{font-size:13px;color:var(--muted)}
+.project-disclaimer{font-size:11px!important;color:#8f8b83!important}
+.timeline{border-top:1px solid var(--line)}
+.timeline-item{display:grid;grid-template-columns:170px 1fr;gap:25px;padding:25px 0;border-bottom:1px solid var(--line)}
+.timeline-date{color:var(--accent);font-size:12px;font-weight:800}
+.timeline-item h3{margin:0 0 7px;font-size:18px}
+.timeline-item p{margin:0;color:var(--muted);font-size:13px}
+.qualities{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.quality{padding:20px;background:var(--panel);border:1px solid var(--line);font-size:13px}
+.quality span{display:block;font-size:20px;margin-bottom:13px}
+.quote{font-size:clamp(28px,5vw,54px);line-height:1.2;letter-spacing:-1.5px;max-width:900px}
+.quote span{color:var(--accent)}
+.quote-credit{color:var(--muted);font-size:12px;margin-top:20px}
+.social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.social{padding:24px;background:var(--panel);border:1px solid var(--line);text-align:center}
+.qr{width:100px;height:100px;margin:0 auto 15px;display:grid;place-items:center;background:#f4f1eb;color:#111;position:relative}
+.qr svg{width:88px;height:88px}
+.social h3{font-size:15px;margin:0 0 5px}
+.social p{font-size:11px;color:var(--muted);margin:0}
+.final-cta{background:var(--accent);color:#111;padding:clamp(30px,6vw,65px)}
+.final-cta h2{max-width:720px}
+.final-cta p{max-width:560px;font-size:14px}
+.final-cta .btn{background:#111;color:white;border-color:#111;margin-top:10px}
+footer{padding:25px 0;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+.footer-row{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+@media(max-width:800px){
+ .hero-grid{grid-template-columns:1fr;gap:35px}
+ .portrait-wrap{max-width:430px;margin:0 auto}
+ .about-grid{grid-template-columns:1fr;gap:25px}
+ .skills-grid{grid-template-columns:repeat(2,1fr)}
+ .qualities{grid-template-columns:repeat(2,1fr)}
+ .section-head{display:block}
+ .section-intro{margin-top:15px}
+ .navlinks{gap:12px}
+}
+@media(max-width:540px){
+ .container{width:calc(100% - 28px)}
+ .nav{height:65px}
+ .nav-left{gap:10px;}
+ .back-btn{font-size:10px; padding:6px 8px;}
+ .navlinks{display:none;position:absolute;top:65px;left:0;right:0;padding:20px;background:#151515;flex-direction:column;border-bottom:1px solid var(--line)}
+ .navlinks.open{display:flex}
+ .menu-btn{display:block}
+ .hero{padding:45px 0 60px}
+ h1{letter-spacing:-3px;font-size:59px}
+ .hero-sub{font-size:16px}
+ section{padding:62px 0}
+ .skills-grid,.projects{grid-template-columns:1fr}
+ .project-visual{height:230px}
+ .timeline-item{grid-template-columns:1fr;gap:8px}
+ .social-grid{grid-template-columns:1fr}
+ .social{display:flex;align-items:center;gap:18px;text-align:left}
+ .qr{flex-shrink:0;margin:0;width:78px;height:78px}
+ .qr svg{width:68px;height:68px}
+ .ticker-inner{justify-content:flex-start}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="nav-left">
+      <a href="index.html" class="back-btn">← На Forma</a>
+      <a class="brand" href="#home">NIKITA<span>.</span></a>
+    </div>
+    <nav class="navlinks" id="navlinks">
+      <a href="#about">Обо мне</a>
+      <a href="#skills">Навыки</a>
+      <a href="#projects">Проекты</a>
+      <a href="#education">Образование</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Открыть меню">☰</button>
+  </div>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="kicker">Личное портфолио · 2026</div>
+      <h1>Привет,<br>я <span>Никита.</span></h1>
+      <p class="hero-sub">Мне 20 лет. Изучаю веб-разработку, создаю сайты и превращаю идеи в работающие цифровые проекты.</p>
+      <div class="buttons">
+        <a class="btn primary" href="#projects">Смотреть проекты ↘</a>
+        <a class="btn secondary" href="#about">Познакомиться</a>
+      </div>
+      <div class="hero-meta">
+        <span>20 лет</span><span>Веб-разработка</span><span>Открыт новым задачам</span>
+      </div>
+    </div>
+    <div class="portrait-wrap">
+      <div class="portrait-frame">
+        <img src="https://i.postimg.cc/Y9746tZM/IMG-20260916-134506.jpg" alt="Фотография Никиты" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#343434,#151515)';this.parentElement.insertAdjacentHTML('beforeend','<div style=&quot;position:absolute;inset:0;display:grid;place-items:center;font-size:70px;font-weight:900;color:#d5ff3f&quot;>N.</div>')">
+        <div class="photo-label">Nikita · Personal portfolio</div>
+      </div>
+      <div class="photo-index">CREATIVE MIND / 001</div>
+      <div class="decor"></div>
+    </div>
+  </div>
+</section>
+<div class="ticker"><div class="container ticker-inner"><span>DESIGN THINKING ✳</span><span>WEB DEVELOPMENT ✳</span><span>CREATIVE PROJECTS ✳</span><span>KEEP LEARNING ✳</span></div></div>
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="section-number">01 / ЗНАКОМСТВО</div><h2>Немного<br>обо мне.</h2></div>
+      <p class="section-intro">Не пытаюсь казаться экспертом во всём. Учусь, практикуюсь и постепенно превращаю знания в реальные проекты.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy">
+        Мне 20 лет, меня зовут <strong>Никита</strong>. Я интересуюсь технологиями, дизайном и тем, как сделать интернет не только функциональным, но и визуально приятным.
+        <br><br>
+        Изучаю основы веб-разработки и пробую себя в создании сайтов: от персональных страниц и электронных открыток до небольших презентационных проектов.
+        <div class="about-note">Мой принцип: лучше честно показать, что умеешь сейчас, и постоянно расти, чем обещать невозможное.</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>20</strong><span>Лет — время пробовать и расти</span></div>
+        <div class="stat"><strong>01</strong><span>Главная цель — развиваться через практику</span></div>
+        <div class="stat"><strong>∞</strong><span>Идей, которые можно воплотить</span></div>
+        <div class="stat"><strong>100%</strong><span>Готовность учиться новому</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="skills">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="section-number">02 / ЧТО Я ИЗУЧАЮ</div><h2>Мои навыки.</h2></div>
+      <p class="section-intro">Набор навыков развивается по мере обучения и работы над собственными проектами.</p>
+    </div>
+    <div class="skills-grid">
+      <article class="skill"><div class="skill-icon">⌘</div><h3>HTML и CSS</h3><p>Структура страниц, оформление блоков, типографика, цвета и адаптивная вёрстка.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Layout</span></div></article>
+      <article class="skill"><div class="skill-icon">↗</div><h3>Веб-дизайн</h3><p>Подбор визуального стиля, композиции, шрифтов и удобной структуры сайта.</p><div class="tags"><span class="tag">UI</span><span class="tag">Композиция</span></div></article>
+      <article class="skill"><div class="skill-icon">✳</div><h3>JavaScript</h3><p>Знакомство с интерактивностью: кнопками, фильтрами, простыми действиями на странице.</p><div class="tags"><span class="tag">Основы JS</span><span class="tag">Интерактивность</span></div></article>
+      <article class="skill"><div class="skill-icon">▣</div><h3>Адаптивность</h3><p>Продумываю, как страница будет выглядеть на телефонах, планшетах и компьютерах.</p><div class="tags"><span class="tag">Mobile-first</span><span class="tag">Responsive</span></div></article>
+      <article class="skill"><div class="skill-icon">◈</div><h3>Работа с ИИ-инструментами</h3><p>Использую цифровые инструменты для поиска идей, обучения и ускорения разработки, проверяя результат самостоятельно.</p><div class="tags"><span class="tag">Идеи</span><span class="tag">Прототипы</span></div></article>
+      <article class="skill"><div class="skill-icon">↻</div><h3>Обучение и практика</h3><p>Разбираю ошибки, изучаю новые подходы и постепенно усложняю собственные проекты.</p><div class="tags"><span class="tag">Практика</span><span class="tag">Развитие</span></div></article>
+    </div>
+  </div>
+</section>
+<section id="projects">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="section-number">03 / ИЗБРАННОЕ</div><h2>Проекты<br>и концепции.</h2></div>
+      <p class="section-intro">Примеры направлений, в которых я практикуюсь. Некоторые карточки — концептуальные макеты, созданные для демонстрации возможностей дизайна.</p>
+    </div>
+    <div class="projects">
+      <article class="project">
+        <div class="project-visual visual-resume">
+          <div class="mock"><div class="mock-small">PERSONAL / PORTFOLIO</div><div class="mock-big">HELLO,<br>I'M NIKITA.</div><div class="mock-line"></div><div class="mock-line" style="width:55%"></div><div style="font-size:10px;color:#d5ff3f;margin-top:20px">DESIGN · CODE · IDEAS</div></div>
+        </div>
+        <div class="project-info"><div class="project-top"><h3>Личное портфолио</h3><span class="project-type">01 / WEB</span></div><p>Персональная страница с информацией обо мне, навыками, образованием и примерами работ.</p><p class="project-disclaimer">Демонстрационный макет для этого резюме.</p></div>
+      </article>
+      <article class="project">
+        <div class="project-visual visual-forma">
+          <div class="forma-card"><div class="f-logo">forma<span>.</span></div><div class="f-title">Сайты,<br>которые<br>говорят за тебя.</div><div class="f-button">ОБСУДИТЬ ПРОЕКТ ↗</div></div>
+        </div>
+        <div class="project-info"><div class="project-top"><h3>Forma — каталог сайтов</h3><span class="project-type">02 / WEB</span></div><p>Концепция каталога услуг с карточками проектов, категориями, ценами и контактами.</p><p class="project-disclaimer">Учебный проект. Функции и содержание могут дорабатываться.</p></div>
+      </article>
+      <article class="project">
+        <div class="project-visual visual-love">
+          <div class="love-card"><div class="heart">♡</div><div style="font-size:9px;letter-spacing:3px">МОЁ ЛЮБИМОЕ МЕСТО</div><h3>Ты — моя<br>маленькая<br>вселенная.</h3><p>Одна страница. Тысяча чувств.</p></div>
+        </div>
+        <div class="project-info"><div class="project-top"><h3>Электронная открытка</h3><span class="project-type">03 / CREATIVE</span></div><p>Идея персонального подарка: индивидуальный текст, мягкая палитра и эмоциональный дизайн.</p><p class="project-disclaimer">Концептуальный пример, не реальный отзыв или заказ.</p></div>
+      </article>
+      <article class="project">
+        <div class="project-visual visual-tutor">
+          <div class="tutor-card"><div class="tutor-top">ОБУЧЕНИЕ · РЕЗУЛЬТАТ</div><h3>Знания,<br>которые открывают возможности.</h3><p>Индивидуальный подход к каждому ученику.</p><div class="tutor-button">УЗНАТЬ БОЛЬШЕ ↗</div></div>
+        </div>
+        <div class="project-info"><div class="project-top"><h3>Сайт репетитора</h3><span class="project-type">04 / CONCEPT</span></div><p>Пример сайта специалиста с понятным предложением, описанием занятий и кнопкой связи.</p><p class="project-disclaimer">Концепция для портфолио, не сайт действующего преподавателя.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+<section id="education">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="section-number">04 / ОБРАЗОВАНИЕ</div><h2>Учусь и<br>пробую.</h2></div>
+      <p class="section-intro">Путь в разработке начинается с основ и продолжается через постоянную практику.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">ОБУЧЕНИЕ</div><div><h3>Онлайн-курсы по основам программирования</h3><p>Изучение базовых принципов программирования, структуры веб-страниц и логики создания цифровых продуктов. Название учебной платформы и сертификаты не указаны.</p></div></div>
+      <div class="timeline-item"><div class="timeline-date">САМОСТОЯТЕЛЬНАЯ ПРАКТИКА</div><div><h3>Создание учебных веб-проектов</h3><p>Практика в разработке страниц, подборе оформления, работе с HTML, CSS и базовой интерактивностью.</p></div></div>
+      <div class="timeline-item"><div class="timeline-date">СЛЕДУЮЩИЙ ЭТАП</div><div><h3>Развитие портфолио</h3><p>Планирую расширять набор проектов, углублять технические знания и улучшать качество интерфейсов.</p></div></div>
+    </div>
+  </div>
+</section>
+<section id="qualities">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="section-number">05 / МОЙ ПОДХОД</div><h2>Не только код.</h2></div>
+      <p class="section-intro">В работе важны не только технические навыки, но и отношение к задаче.</p>
+    </div>
+    <div class="qualities">
+      <div class="quality"><span>↗</span><strong>Любознательность</strong><br>Мне интересно разбираться, как всё устроено.</div>
+      <div class="quality"><span>◈</span><strong>Внимание к деталям</strong><br>Замечаю, как мелочи влияют на общий вид.</div>
+      <div class="quality"><span>↻</span><strong>Готовность учиться</strong><br>Ошибки — часть процесса, а не повод остановиться.</div>
+      <div class="quality"><span>♡</span><strong>Открытость идеям</strong><br>Люблю искать разные способы решения задачи.</div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="section-number">06 / МОЁ МНЕНИЕ</div>
+    <p class="quote">«Не обязательно знать всё с самого начала. Главное — <span>не переставать разбираться.</span>»</p>
+    <div class="quote-credit">— Никита, 20 лет · учусь через практику</div>
+  </div>
+</section>
+<section id="contacts">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="section-number">07 / СВЯЗЬ</div><h2>Найдём<br>общий язык.</h2></div>
+      <p class="section-intro">Здесь можно разместить ссылки на социальные сети и контакты. Пока QR-коды демонстрационные и не ведут на реальные профили.</p>
+    </div>
+    <div class="social-grid">
+      <div class="social"><div class="qr" aria-label="Демонстрационный QR-код"><svg viewBox="0 0 21 21" aria-hidden="true"><rect width="21" height="21" fill="#f4f1eb"/><g fill="#111"><path d="M1 1h7v7H1zM3 3v3h3V3zM13 1h7v7h-7zM15 3v3h3V3zM1 13h7v7H1zM3 15v3h3v-3zM10 1h2v2h-2zM10 5h2v3h-2zM9 10h3v2H9zM13 10h2v2h-2zM17 10h3v2h-3zM10 14h2v2h-2zM13 13h2v3h-2zM16 14h4v2h-4zM9 18h3v2H9zM14 18h2v2h-2zM18 18h2v2h-2z"/></g></svg></div><div><h3>Telegram</h3><p>Демо-код · ссылка пока не подключена</p></div></div>
+      <div class="social"><div class="qr" aria-label="Демонстрационный QR-код"><svg viewBox="0 0 21 21" aria-hidden="true"><rect width="21" height="21" fill="#f4f1eb"/><g fill="#111"><path d="M1 1h7v7H1zM3 3v3h3V3zM13 1h7v7h-7zM15 3v3h3V3zM1 13h7v7H1zM3 15v3h3v-3zM10 1h2v3h-2zM9 6h3v2H9zM10 10h2v3h-2zM14 10h2v2h-2zM18 10h2v3h-2zM9 14h3v2H9zM14 14h2v2h-2zM17 16h3v2h-3zM10 18h3v2h-3z"/></g></svg></div><div><h3>ВКонтакте</h3><p>Демо-код · ссылка пока не подключена</p></div></div>
+      <div class="social"><div class="qr" aria-label="Демонстрационный QR-код"><svg viewBox="0 0 21 21" aria-hidden="true"><rect width="21" height="21" fill="#f4f1eb"/><g fill="#111"><path d="M1 1h7v7H1zM3 3v3h3V3zM13 1h7v7h-7zM15 3v3h3V3zM1 13h7v7H1zM3 15v3h3v-3zM10 1h2v2h-2zM9 5h3v3H9zM10 10h3v2h-3zM15 10h2v3h-2zM10 14h2v2h-2zM13 16h3v2h-3zM17 14h3v2h-3zM9 18h3v2H9zM18 18h2v2h-2z"/></g></svg></div><div><h3>Почта</h3><p>Демо-код · адрес пока не добавлен</p></div></div>
+    </div>
+    <p style="color:var(--muted);font-size:11px;margin-top:20px">Важно: эти QR-коды — визуальные заглушки, а не настоящие коды для сканирования. Перед публикацией замени их на QR-коды своих профилей.</p>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="container final-cta">
+    <div class="section-number" style="color:#111">OPEN TO IDEAS</div>
+    <h2>Каждый большой проект когда-то был маленькой идеей.</h2>
+    <p>Это демонстрационное резюме показывает один из вариантов оформления личного сайта. Его можно адаптировать под другую профессию, стиль, фотографии и реальные достижения.</p>
+    <a class="btn" href="#home">Вернуться наверх ↑</a>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="container footer-row">
+    <span>© 2026 NIKITA — ЛИЧНОЕ ПОРТФОЛИО</span>
+    <span>Учебный пример · Дизайн и веб-разработка</span>
+    <a href="#home">Наверх ↑</a>
+  </div>
+</footer>
 <script>
+const menuBtn = document.getElementById('menuBtn');
+const navlinks = document.getElementById('navlinks');
+menuBtn.addEventListener('click', function(){
+  navlinks.classList.toggle('open');
+});
+navlinks.querySelectorAll('a').forEach(function(link){
+  link.addEventListener('click', function(){
+    navlinks.classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
+</script>
+
+<script>
+/* ========== СКРИПТЫ FORMA ========== */
 (function(){
   const filters = document.querySelectorAll('.filter');
   const cards = document.querySelectorAll('.project');
@@ -322,7 +685,8 @@ footer{margin-top:60px;padding:28px 0;border-top:1px solid var(--line);color:var
   const modal = document.getElementById('modal');
   const close = document.getElementById('closeModal');
 
-  document.querySelectorAll('.more').forEach(function(button){
+  // Ищем только кнопки, чтобы ссылка "Посмотреть пример" работала как обычная ссылка
+  document.querySelectorAll('button.more').forEach(function(button){
     button.addEventListener('click', function(){
       const card = button.closest('.project');
       document.getElementById('modalTitle').textContent = card.dataset.title;
@@ -346,6 +710,41 @@ footer{margin-top:60px;padding:28px 0;border-top:1px solid var(--line);color:var
     if(event.key === 'Escape') closeModal();
   });
 })();
+
+/* ========== ЛОГИКА ПЕРЕКЛЮЧЕНИЯ НА ПОРТФОЛИО ========== */
+function openPortfolio() {
+  const iframe = document.getElementById('portfolio-iframe');
+  
+  // Загружаем HTML портфолио в iframe (только один раз)
+  if (!iframe.srcdoc) {
+    let html = document.getElementById('portfolio-template').innerHTML;
+    
+    // Меняем кнопку "Назад", чтобы она отправляла сообщение родительскому окну
+    html = html.replace(
+      '<a href="index.html" class="back-btn">← На Forma</a>',
+      '<a href="#" class="back-btn" onclick="event.preventDefault(); window.parent.postMessage(\'backToForma\', \'*\');">← На Forma</a>'
+    );
+    
+    iframe.srcdoc = html;
+  }
+  
+  // Прячем каталог, показываем портфолио
+  document.getElementById('forma-site').style.display = 'none';
+  document.getElementById('portfolio-site').style.display = 'block';
+  document.body.style.overflow = 'hidden'; // Отключаем скролл фона
+  window.scrollTo(0, 0);
+}
+
+// Слушаем кнопку "Назад" из iframe
+window.addEventListener('message', function(e) {
+  if (e.data === 'backToForma') {
+    document.getElementById('portfolio-site').style.display = 'none';
+    document.getElementById('forma-site').style.display = 'block';
+    document.body.style.overflow = ''; // Возвращаем скролл
+    window.scrollTo(0, 0);
+  }
+});
 </script>
+
 </body>
-                                                                                                                   </html>
+</html>
