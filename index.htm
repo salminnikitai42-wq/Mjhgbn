@@ -167,14 +167,16 @@ footer{margin-top:60px;padding:28px 0;border-top:1px solid var(--line);color:var
         </div>
 
         <div class="grid" id="projects">
+          <!-- КАРТОЧКА РОМАНТИЧЕСКОЙ СТРАНИЦЫ -->
           <article class="project" data-category="personal" data-title="Романтическая страница" data-description="Персональная страница для любимого человека: ваше послание, фотографии, памятные даты и тёплые детали. Можно сделать сюрпризом или подарком." data-price="от 299 ₽">
-            <div class="preview"><div class="sample"><small>для самого важного</small>Ты — моё<br>любимое место ♡</div></div>
-            <div class="project-body"><span class="tag">Личное · Романтика</span><h3>Романтическая страница</h3><p>Красивое признание, которое останется с вами.</p><div class="project-bottom"><span class="price">от 299 ₽</span><button class="more">Подробнее ↗</button></div></div>
+            <div class="preview"><div class="sample"><small>для самого важного</small>Ты моя<br>любимая ♡</div></div>
+            <div class="project-body"><span class="tag">Личное · Романтика</span><h3>Романтическая страница</h3><p>Красивое признание, которое останется с вами.</p><div class="project-bottom"><span class="price">от 299 ₽</span><a href="javascript:void(0)" class="more" onclick="openRomantic()">Посмотреть пример ↗</a></div></div>
           </article>
 
+          <!-- КАРТОЧКА СВАДЕБНОГО ПРИГЛАШЕНИЯ (ДОБАВЛЕНА КНОПКА ПРОСМОТРА) -->
           <article class="project" data-category="events" data-title="Свадебное приглашение" data-description="Онлайн-приглашение на свадьбу с именами пары, датой, программой дня, местом проведения и важной информацией для гостей." data-price="от 599 ₽">
             <div class="preview"><div class="sample"><small>the beginning of forever</small>Александр<br>& Анастасия</div></div>
-            <div class="project-body"><span class="tag">События · Свадьба</span><h3>Свадебное приглашение</h3><p>Элегантный способ пригласить близких.</p><div class="project-bottom"><span class="price">от 599 ₽</span><button class="more">Подробнее ↗</button></div></div>
+            <div class="project-body"><span class="tag">События · Свадьба</span><h3>Свадебное приглашение</h3><p>Элегантный способ пригласить близких.</p><div class="project-bottom"><span class="price">от 599 ₽</span><a href="javascript:void(0)" class="more" onclick="openWedding()">Посмотреть пример ↗</a></div></div>
           </article>
 
           <article class="project" data-category="study" data-title="Сайт репетитора" data-description="Страница преподавателя с описанием занятий, предметами, форматами обучения, преимуществами, ценами и контактами для записи." data-price="от 1 490 ₽">
@@ -197,7 +199,7 @@ footer{margin-top:60px;padding:28px 0;border-top:1px solid var(--line);color:var
             <div class="project-body"><span class="tag">События · Праздник</span><h3>Приглашение на праздник</h3><p>Собери всех важных людей красиво.</p><div class="project-bottom"><span class="price">от 299 ₽</span><button class="more">Подробнее ↗</button></div></div>
           </article>
 
-          <!-- КАРТОЧКА С ПОРТФОЛИО -->
+          <!-- КАРТОЧКА С ПОРТФОЛИО НИКИТЫ -->
           <article class="project" data-category="personal" data-title="Личное портфолио" data-description="Современная персональная страница о тебе: навыки, проекты, достижения, фотографии и способы связи. Подойдёт для творческих специалистов и начинающих." data-price="от 1 490 ₽">
             <div class="preview"><div class="sample"><small>познакомимся?</small>Это больше,<br>чем резюме.</div></div>
             <div class="project-body"><span class="tag">Личное · Портфолио</span><h3>Личное портфолио</h3><p>Расскажи о себе и своих возможностях.</p><div class="project-bottom"><span class="price">от 1 490 ₽</span><a href="javascript:void(0)" class="more" onclick="openPortfolio()">Посмотреть пример ↗</a></div></div>
@@ -295,7 +297,17 @@ footer{margin-top:60px;padding:28px 0;border-top:1px solid var(--line);color:var
   </footer>
 </div>
 
-<!-- ОБЕРТКА ПОРТФОЛИО (IFRAME) -->
+<!-- ОБЕРТКА ДЛЯ РОМАНТИЧЕСКОГО САЙТА -->
+<div id="romantic-site" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 99997; background: #f8faff;">
+  <iframe id="romantic-iframe" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<!-- ОБЕРТКА ДЛЯ СВАДЕБНОГО САЙТА -->
+<div id="wedding-site" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 99998; background: #fbf5f2;">
+  <iframe id="wedding-iframe" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<!-- ОБЕРТКА ПОРТФОЛИО НИКИТЫ -->
 <div id="portfolio-site" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 99999; background: #101010;">
   <iframe id="portfolio-iframe" style="width: 100%; height: 100%; border: none;"></iframe>
 </div>
@@ -310,14 +322,866 @@ footer{margin-top:60px;padding:28px 0;border-top:1px solid var(--line);color:var
   </div>
 </div>
 
-<!-- ШАБЛОН ДЛЯ САЙТА НИКИТЫ (НЕ ВИДЕН ПОЛЬЗОВАТЕЛЮ) -->
+<!-- ========================================== -->
+<!-- ШАБЛОН: СВАДЕБНЫЙ САЙТ -->
+<!-- ========================================== -->
+<script type="text/html" id="wedding-template">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7eae7">
+<title>Ася & Никита — свадебное приглашение</title>
+<style>
+:root{--bg:#fbf5f2;--paper:#fffaf8;--pink:#d6a19f;--darkpink:#a76e70;--light:#f2dfdc;--ink:#503a39;--muted:#8c7775;--line:#e5cfcb;--serif:Georgia,"Times New Roman",serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(1120px,calc(100% - 36px));margin:auto}
+section{padding:76px 0}
+h1,h2,h3,p{margin-top:0}
+h2{font:400 clamp(34px,5vw,49px)/1.12 var(--serif);margin-bottom:18px}
+p{color:var(--muted)}
+.serif{font-family:var(--serif)}
+.eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:10px;color:var(--darkpink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;background:var(--pink);color:white;border:1px solid var(--pink);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;transition:.2s}
+.btn:hover{background:var(--darkpink)}
+.btn.outline{background:transparent;color:var(--ink);border-color:var(--line)}
+header{position:sticky;top:0;z-index:10;background:#fbf5f2ed;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.nav{min-height:65px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.nav-left{display:flex;align-items:center;gap:15px;}
+.back-btn{font-size:11px;text-transform:uppercase;letter-spacing:1px;border:1px solid var(--line);padding:7px 12px;border-radius:4px;font-weight:800;transition:all .2s;color:var(--muted);}
+.back-btn:hover{border-color:var(--darkpink);color:var(--darkpink);}
+.brand{font:italic 27px var(--serif)}
+.brand span{color:var(--darkpink)}
+.links{display:flex;gap:17px;flex-wrap:wrap;justify-content:flex-end}
+.links a{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.links a:hover{color:var(--darkpink)}
+.hero{padding:0;display:grid;grid-template-columns:1fr 1fr;min-height:570px;background:var(--light)}
+.hero-photo{min-height:570px;position:relative;display:grid;place-items:center;overflow:hidden;background:linear-gradient(145deg,#c49b94,#ead1cb 45%,#8f6965)}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo-placeholder{color:white;text-align:center;font:italic 27px var(--serif);padding:25px}
+.photo-placeholder small{display:block;font:10px/2 Arial,sans-serif;letter-spacing:2px;text-transform:uppercase}
+.hero-copy{display:grid;place-items:center;text-align:center;padding:55px 28px;background:radial-gradient(ellipse at top right,#fff 0,transparent 60%),var(--paper)}
+.hero-inner{max-width:460px}
+.hero h1{font:400 clamp(58px,8vw,92px)/.96 var(--serif);letter-spacing:-3px;margin:27px 0}
+.hero h1 span{display:block;color:var(--darkpink);font-style:italic;font-size:.62em;margin:10px}
+.date{font:21px var(--serif);letter-spacing:5px;margin:22px 0}
+.hero-note{font:italic 18px var(--serif)}
+.flower{font-size:27px;color:var(--darkpink)}
+.countdown{background:#f3e5e2;padding:26px 0;border-block:1px solid white}
+.countdown-grid{display:grid;grid-template-columns:1.5fr repeat(4,1fr) 1.5fr;align-items:center;text-align:center;gap:8px}
+.count-intro,.count-end{font:italic 18px var(--serif)}
+.unit{border-right:1px solid #d8b9b5}
+.unit:nth-child(5){border:0}
+.num{display:block;font:36px var(--serif);color:var(--darkpink);line-height:1.3}
+.label{font-size:9px;letter-spacing:1.4px;color:var(--muted);text-transform:uppercase}
+.heading{text-align:center;margin-bottom:40px}
+.heading p{max-width:490px;margin:0 auto}
+.story{display:grid;grid-template-columns:1fr 1fr;background:var(--paper)}
+.story-photo{min-height:370px;background:linear-gradient(140deg,#d5b3ab,#f0deda,#a77c76);display:grid;place-items:center;text-align:center;color:white;padding:20px}
+.story-photo img{width:100%;height:100%;object-fit:cover}
+.story-copy{padding:clamp(28px,6vw,70px);display:flex;flex-direction:column;justify-content:center}
+.story-copy p{font-size:14px}
+.heart{font-size:25px;color:var(--darkpink)}
+.details{background:#f3e5e2}
+.details-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.detail{text-align:center;padding:20px 14px;border-right:1px solid #dfc3bf}
+.detail:last-child{border:0}
+.icon{font-size:28px;color:var(--darkpink)}
+.detail h3{font:22px var(--serif);margin:8px 0}
+.detail p{font-size:12px;margin:0}
+.detail small{color:var(--darkpink)}
+.gallery-layout{display:grid;grid-template-columns:.7fr 2fr;gap:30px;align-items:center}
+.gallery-intro p{font:italic 17px/1.6 var(--serif)}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gallery-item{min-height:205px;position:relative;overflow:hidden;display:grid;place-items:center;text-align:center;padding:10px;color:white;background:linear-gradient(145deg,#d8b7ae,#f0dfda,#98716b)}
+.gallery-item:nth-child(2){background:linear-gradient(145deg,#aa817a,#ebccc4,#76534f)}
+.gallery-item:nth-child(3){background:linear-gradient(145deg,#f0d9d1,#bc938a,#e3c6be)}
+.gallery-item:nth-child(4){background:linear-gradient(145deg,#c6a49c,#e8d8d1,#896861)}
+.gallery-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gallery-item span{position:relative;font:italic 18px var(--serif);text-shadow:0 1px 5px #654}
+.gallery-item small{display:block;font:9px Arial,sans-serif;letter-spacing:1px;margin-top:8px}
+.schedule{background:#f3e5e2}
+.timeline{max-width:740px;margin:auto}
+.event{display:grid;grid-template-columns:90px 35px 1fr;gap:15px;padding:20px 0;border-bottom:1px solid #dfc3bf;align-items:start}
+.event-time{font:22px var(--serif);color:var(--darkpink)}
+.event-icon{text-align:center;font-size:21px}
+.event h3{font:22px var(--serif);margin:0 0 5px}
+.event p{font-size:13px;margin:0}
+.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.panel{background:var(--paper);border:1px solid var(--line);padding:clamp(22px,4vw,38px)}
+.panel h3{font:28px var(--serif);margin-bottom:12px}
+.panel p{font-size:13px}
+.palette{display:flex;gap:10px;margin:22px 0}
+.swatch{flex:1;text-align:center;min-width:0}
+.swatch-color{height:42px;border-radius:30px}
+.swatch small{display:block;font-size:9px;color:var(--muted);margin-top:7px}
+form{display:grid;gap:13px}
+label{font-size:12px}
+input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);background:#fffdfb;color:var(--ink);border-radius:0;outline:none;font-size:13px}
+input:focus,select:focus,textarea:focus{border-color:var(--darkpink)}
+textarea{min-height:90px;resize:vertical}
+.status{font-size:12px;color:var(--darkpink);overflow-wrap:anywhere}
+.hint{font-size:11px}
+.music-card{border:1px solid var(--line);padding:18px;display:flex;align-items:center;gap:14px}
+.music-cover{width:60px;height:60px;flex-shrink:0;display:grid;place-items:center;background:linear-gradient(135deg,#e7c6c1,#bd8d89);color:white;font-size:25px}
+.music-info{flex:1}
+.music-info strong{display:block;font:19px var(--serif)}
+.music-info span{font-size:11px;color:var(--muted)}
+.music-toggle{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--darkpink);font-size:18px}
+.wishes{background:#f3e5e2}
+.wish-form{display:grid;grid-template-columns:1fr auto;gap:10px}
+.wish-form textarea{min-height:54px}
+.wish-list{display:grid;gap:10px;margin-top:20px}
+.wish{background:var(--paper);border:1px solid var(--line);padding:13px;overflow-wrap:anywhere;font:italic 16px var(--serif)}
+.wish small{display:block;font:10px Arial,sans-serif;color:var(--darkpink);margin-bottom:5px}
+footer{text-align:center;padding:42px 0 25px}
+.footer-names{font:35px var(--serif)}
+.footer-date{font-size:10px;letter-spacing:3px;color:var(--darkpink);margin:10px 0}
+footer p{font-size:11px}
+@media(max-width:850px){
+ .nav{align-items:flex-start;padding:12px 0}
+ .links{gap:9px 12px}
+ .countdown-grid{grid-template-columns:repeat(4,1fr)}
+ .count-intro,.count-end{grid-column:1/-1;padding:5px}
+ .gallery-layout{grid-template-columns:1fr}
+ .gallery-intro{text-align:center}
+}
+@media(max-width:600px){
+ .container{width:calc(100% - 28px)}
+ section{padding:55px 0}
+ .nav{display:block;text-align:center}
+ .nav-left{justify-content:center; margin-bottom:9px;}
+ .brand{display:block;}
+ .links{justify-content:center;gap:8px 12px}
+ .links a{font-size:8px}
+ .hero{grid-template-columns:1fr}
+ .hero-photo{min-height:330px}
+ .hero-copy{padding:45px 18px}
+ .hero h1{font-size:65px}
+ .date{font-size:17px;letter-spacing:4px}
+ .num{font-size:28px}
+ .label{font-size:8px;letter-spacing:.5px}
+ .story{grid-template-columns:1fr}
+ .story-photo{min-height:260px}
+ .story-copy{padding:30px 24px}
+ .details-grid{grid-template-columns:1fr 1fr}
+ .detail{padding:20px 8px;border-bottom:1px solid #dfc3bf}
+ .detail:nth-child(2){border-right:0}
+ .detail:nth-child(n+3){border-bottom:0}
+ .gallery{grid-template-columns:1fr 1fr}
+ .gallery-item{min-height:155px}
+ .event{grid-template-columns:65px 25px 1fr;gap:8px}
+ .event-time{font-size:18px}
+ .event h3{font-size:19px}
+ .bottom-grid{grid-template-columns:1fr}
+ .wish-form{grid-template-columns:1fr}
+ .wish-form .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="nav-left">
+      <a href="#" class="back-btn" onclick="event.preventDefault(); window.parent.postMessage('backToFormaWedding', '*');">← На Forma</a>
+      <a class="brand" href="#home">А&Н<span>.</span></a>
+    </div>
+    <nav class="links" aria-label="Навигация">
+      <a href="#home">Главная</a><a href="#story">О нас</a>
+      <a href="#details">Детали</a><a href="#schedule">Программа</a>
+      <a href="#dresscode">Дресс-код</a><a href="#gallery">Галерея</a>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-photo">
+    <div class="photo-placeholder">Ася и Никита<small>Место для фотографии пары</small></div>
+  </div>
+  <div class="hero-copy">
+    <div class="hero-inner">
+      <div class="eyebrow">Приглашение на свадьбу</div>
+      <div class="flower">✳</div>
+      <h1>Ася <span>&</span> Никита</h1>
+      <div class="date">05 · 12 · 2026</div>
+      <p class="hero-note">Два сердца. Одна история. Навсегда.</p>
+      <p>Будем счастливы разделить этот особенный день с вами.</p>
+      <a class="btn" href="#rsvp">Подтвердить присутствие →</a>
+    </div>
+  </div>
+</section>
+
+<div class="countdown">
+  <div class="container countdown-grid">
+    <div class="count-intro">До нашей свадьбы<br>осталось ♡</div>
+    <div class="unit"><span class="num" id="days">—</span><span class="label">дней</span></div>
+    <div class="unit"><span class="num" id="hours">—</span><span class="label">часов</span></div>
+    <div class="unit"><span class="num" id="minutes">—</span><span class="label">минут</span></div>
+    <div class="unit"><span class="num" id="seconds">—</span><span class="label">секунд</span></div>
+    <div class="count-end" id="countdownMessage">Самое красивое<br>впереди…</div>
+  </div>
+</div>
+
+<section id="story">
+  <div class="container story">
+    <div class="story-photo">♡<br>Место для вашего фото</div>
+    <div class="story-copy">
+      <div class="eyebrow">Наша история</div>
+      <h2>День, который<br>мы разделим с вами</h2>
+      <p>Мы — Ася и Никита. Два человека, которые нашли друг друга и решили продолжить свой путь вместе.</p>
+      <p>Приглашаем вас разделить с нами этот особенный день, наполненный любовью, счастьем и самыми близкими людьми.</p>
+      <p>Для нас будет очень важно видеть вас рядом.</p>
+      <div class="heart">♡</div>
+    </div>
+  </div>
+</section>
+
+<section class="details" id="details">
+  <div class="container">
+    <div class="heading">
+      <div class="eyebrow">Самое важное</div><h2>Детали праздника</h2>
+      <p>Всю необходимую информацию добавим сюда, как только она будет известна.</p>
+    </div>
+    <div class="details-grid">
+      <div class="detail"><div class="icon">⌖</div><h3>Место</h3><p>Площадка уточняется.</p><small>Адрес сообщим позже</small></div>
+      <div class="detail"><div class="icon">◷</div><h3>Время</h3><p>Начало уточняется.</p><small>Добавим расписание</small></div>
+      <div class="detail"><div class="icon">♧</div><h3>Дресс-код</h3><p>Нежные оттенки.</p><small>Палитра ниже</small></div>
+      <div class="detail"><div class="icon">♡</div><h3>Ваше присутствие</h3><p>Лучший подарок для нас.</p><small>Ждём встречи</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container gallery-layout">
+    <div class="gallery-intro">
+      <div class="eyebrow">В кадре — любовь</div><h2>Наша галерея</h2>
+      <p>Моменты, которые хочется сохранить навсегда.</p>
+      <p class="hint">Цветные карточки — заглушки для ваших фотографий.</p>
+    </div>
+    <div class="gallery">
+      <div class="gallery-item"><span>Нежность<small>ФОТО 01</small></span></div>
+      <div class="gallery-item"><span>Вместе<small>ФОТО 02</small></span></div>
+      <div class="gallery-item"><span>Счастье<small>ФОТО 03</small></span></div>
+      <div class="gallery-item"><span>Навсегда<small>ФОТО 04</small></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="schedule" id="schedule">
+  <div class="container">
+    <div class="heading"><div class="eyebrow">Один день — целая история</div><h2>Программа дня</h2><p>Время пока не определено. Здесь появится окончательное расписание.</p></div>
+    <div class="timeline">
+      <div class="event"><div class="event-time">Позже</div><div class="event-icon">♧</div><div><h3>Сбор гостей</h3><p>Встречаемся, обнимаемся и настраиваемся на праздник.</p></div></div>
+      <div class="event"><div class="event-time">Позже</div><div class="event-icon">♡</div><div><h3>Церемония</h3><p>Самый трогательный момент этого дня.</p></div></div>
+      <div class="event"><div class="event-time">Позже</div><div class="event-icon">♬</div><div><h3>Праздничный ужин</h3><p>Вкусная еда, тёплые слова и близкие люди.</p></div></div>
+      <div class="event"><div class="event-time">Позже</div><div class="event-icon">✧</div><div><h3>Танцы и веселье</h3><p>Пусть этот вечер запомнится надолго.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="dresscode">
+  <div class="container bottom-grid">
+    <div class="panel">
+      <div class="eyebrow">Палитра торжества</div><h3>Дресс-код</h3>
+      <p>Будем рады, если вы поддержите атмосферу праздника с помощью нежных, спокойных оттенков. Это пожелание, а не строгое правило.</p>
+      <div class="palette">
+        <div class="swatch"><div class="swatch-color" style="background:#e7c2c0"></div><small>Пудровый</small></div>
+        <div class="swatch"><div class="swatch-color" style="background:#f3e5df"></div><small>Молочный</small></div>
+        <div class="swatch"><div class="swatch-color" style="background:#cba99b"></div><small>Бежевый</small></div>
+        <div class="swatch"><div class="swatch-color" style="background:#a77e7a"></div><small>Розовый</small></div>
+      </div>
+      <p class="dress-note">Главное — чтобы вам было комфортно и празднично.</p>
+    </div>
+
+    <div class="panel">
+      <div class="eyebrow">Музыка и настроение</div><h3>Наш плейлист</h3>
+      <p>Добавьте любимую музыку, которая будет создавать настроение нашей свадьбы.</p>
+      <div class="music-card">
+        <div class="music-cover">♫</div>
+        <div class="music-info"><strong>Наша мелодия</strong><span>Демонстрационный плеер</span></div>
+        <button class="music-toggle" id="musicToggle" type="button" aria-label="Включить музыку">▶</button>
+      </div>
+      <p class="music-note" id="musicStatus">Музыка не добавлена. Укажите аудиофайл в коде, чтобы включить воспроизведение.</p>
+      <audio id="weddingAudio" preload="none"></audio>
+    </div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <div class="container bottom-grid">
+    <div class="panel">
+      <div class="eyebrow">Будем ждать вашего ответа</div><h3>Подтвердите присутствие</h3>
+      <p>Пожалуйста, заполните форму, чтобы мы могли подготовиться к празднику.</p>
+      <form id="rsvpForm">
+        <label>Ваше имя и фамилия
+          <input name="guest" required maxlength="100" placeholder="Например, Анна Иванова">
+        </label>
+        <label>Вы будете на свадьбе?
+          <select name="attendance" required>
+            <option value="">Выберите ответ</option>
+            <option value="Да, с радостью буду!">Да, с радостью буду!</option>
+            <option value="К сожалению, не получится">К сожалению, не получится</option>
+          </select>
+        </label>
+        <label>Количество гостей, включая вас
+          <select name="count">
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+          </select>
+        </label>
+        <label>Пожелания или особенности питания
+          <textarea name="notes" placeholder="Если хотите, напишите здесь..."></textarea>
+        </label>
+        <button class="btn" type="submit">Подготовить ответ →</button>
+        <div class="status" id="rsvpStatus" role="status"></div>
+        <p class="hint">Демонстрация: эта форма пока не отправляет данные организаторам. После настройки можно подключить почту или сервис форм.</p>
+      </form>
+    </div>
+
+    <div class="panel">
+      <div class="eyebrow">Немного музыки для души</div><h3>Пожелания молодожёнам</h3>
+      <p>Оставьте тёплые слова, которые мы сможем перечитать после праздника.</p>
+      <form id="wishForm">
+        <label>Как вас зовут?
+          <input name="wishName" required maxlength="80" placeholder="Ваше имя">
+        </label>
+        <label>Ваше пожелание
+          <textarea name="wishText" required maxlength="500" placeholder="Пусть ваша история любви..."></textarea>
+        </label>
+        <button class="btn outline" type="submit">Добавить пожелание ♡</button>
+        <div class="status" id="wishStatus" role="status"></div>
+      </form>
+      <div class="wish-list" id="wishList"></div>
+      <p class="hint">Пожелания хранятся только в текущей открытой странице и исчезнут после её перезагрузки.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wishes">
+  <div class="container heading">
+    <div class="eyebrow">До скорой встречи</div>
+    <h2>Спасибо, что вы с нами ♡</h2>
+    <p>С любовью и нетерпением ждём этот день вместе с вами.</p>
+    <a class="btn" href="#rsvp">Ответить на приглашение ↑</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-names">Ася & Никита</div>
+    <div class="footer-date">05 · 12 · 2026</div>
+    <p>Сделано с любовью ♡</p>
+    <p>Демонстрационный пример свадебного сайта Forma</p>
+    <a class="btn outline" href="https://max.ru/u/f9LHodD0cOKm8ngVZUv7CR6Wpz9QvvPkdiGwaLGDxL9HoNdJxlfot3X5udQ" target="_blank" rel="noopener">Связаться с Forma ↗</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const weddingDate = new Date(2026, 11, 5, 0, 0, 0);
+
+  function updateCountdown(){
+    const now = new Date();
+    let diff = weddingDate.getTime() - now.getTime();
+    const message = document.getElementById('countdownMessage');
+
+    if(diff <= 0){
+      ['days','hours','minutes','seconds'].forEach(id=>{
+        document.getElementById(id).textContent = '0';
+      });
+      message.innerHTML = 'Этот день<br>настал ♡';
+      return;
+    }
+
+    const days = Math.floor(diff / 86400000);
+    diff %= 86400000;
+    const hours = Math.floor(diff / 3600000);
+    diff %= 3600000;
+    const minutes = Math.floor(diff / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown,1000);
+
+  document.getElementById('rsvpForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const data = new FormData(this);
+    const name = String(data.get('guest') || '').trim();
+    const answer = String(data.get('attendance') || '');
+    const count = String(data.get('count') || '1');
+    const notes = String(data.get('notes') || '').trim();
+
+    if(!name || !answer){
+      document.getElementById('rsvpStatus').textContent = 'Заполните имя и выберите ответ.';
+      return;
+    }
+
+    document.getElementById('rsvpStatus').textContent =
+      'Спасибо, ' + name + '! Ваш ответ подготовлен: ' + answer +
+      ' Количество гостей: ' + count +
+      (notes ? '. Комментарий: ' + notes : '') +
+      '. Для реальной отправки нужно подключить сервис форм.';
+  });
+
+  document.getElementById('wishForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const name = this.elements.wishName.value.trim();
+    const text = this.elements.wishText.value.trim();
+    const status = document.getElementById('wishStatus');
+
+    if(!name || !text){
+      status.textContent = 'Пожалуйста, заполните оба поля.';
+      return;
+    }
+
+    const item = document.createElement('div');
+    item.className = 'wish';
+    const author = document.createElement('small');
+    author.textContent = name + ' желает вам:';
+    const message = document.createElement('div');
+    message.textContent = text;
+    item.append(author,message);
+    document.getElementById('wishList').prepend(item);
+    this.reset();
+    status.textContent = 'Пожелание добавлено на эту страницу ♡';
+  });
+
+  const audio = document.getElementById('weddingAudio');
+  const toggle = document.getElementById('musicToggle');
+  const musicStatus = document.getElementById('musicStatus');
+
+  toggle.addEventListener('click',async function(){
+    if(!audio.getAttribute('src')){
+      musicStatus.textContent = 'Чтобы включить музыку, добавьте аудиофайл и укажите его путь в src элемента weddingAudio.';
+      return;
+    }
+    try{
+      if(audio.paused){
+        await audio.play();
+        toggle.textContent = 'Ⅱ';
+        musicStatus.textContent = 'Музыка играет ♡';
+      }else{
+        audio.pause();
+        toggle.textContent = '▶';
+        musicStatus.textContent = 'Музыка на паузе.';
+      }
+    }catch(err){
+      musicStatus.textContent = 'Не удалось включить аудио. Проверьте путь к файлу.';
+    }
+  });
+
+  audio.addEventListener('ended',function(){
+    toggle.textContent = '▶';
+    musicStatus.textContent = 'Воспроизведение завершено.';
+  });
+})();
+</script>
+</body>
+</html>
+</script>
+
+
+<!-- ========================================== -->
+<!-- ШАБЛОН: РОМАНТИЧЕСКИЙ САЙТ (ДЛЯ АНЮТКИ) -->
+<!-- ========================================== -->
+<script type="text/html" id="romantic-template">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ты моя любимая ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root { --blue: #b9dcff; --blue-deep: #78b8ed; --pink: #f6c8df; --pink-deep: #e9a6c9; --ink: #354056; --muted: #8791a5; --glass: rgba(255,255,255,.66); --border: rgba(255,255,255,.86); }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-height: 100vh; overflow-x: hidden; font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--ink); background: radial-gradient(ellipse at 12% 12%, rgba(184,220,255,.78), transparent 42%), radial-gradient(ellipse at 88% 34%, rgba(255,205,228,.68), transparent 43%), radial-gradient(ellipse at 50% 100%, rgba(224,220,255,.42), transparent 40%), #f8faff; -webkit-font-smoothing: antialiased; }
+button { font: inherit; }
+.ambient { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.orb { position: absolute; width: 260px; height: 260px; border-radius: 50%; filter: blur(75px); opacity: .46; animation: drift 14s ease-in-out infinite alternate; }
+.orb-blue { background: #9ed2ff; top: 5%; left: -130px; }
+.orb-pink { background: #ffc5df; right: -130px; top: 40%; animation-delay: -5s; }
+.orb-lilac { background: #d7d0ff; left: 32%; bottom: -180px; animation-delay: -8s; }
+@keyframes drift { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(35px, -25px, 0) scale(1.12); } }
+#particles { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 15; pointer-events: none; }
+
+/* Кнопка назад */
+.back-btn-romantic { position: fixed; top: 20px; left: 20px; z-index: 100; background: rgba(255,255,255,.8); backdrop-filter: blur(10px); padding: 10px 15px; border-radius: 12px; color: var(--ink); text-decoration: none; font-size: 13px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.2s, background 0.2s; }
+.back-btn-romantic:hover { transform: translateY(-2px); background: white; }
+
+#envelope-screen { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 24px; overflow: hidden; background: rgba(244,248,255,.30); backdrop-filter: blur(20px); transition: opacity 1s ease, visibility 1s ease; }
+#envelope-screen::before { content: ""; position: absolute; inset: 0; background-image: url("https://i.postimg.cc/pdz30bdm/ee66c328e193e1154fef7631b754e366.gif"); background-size: 95px; background-repeat: repeat; opacity: .055; pointer-events: none; }
+#envelope-screen.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+.envelope-wrap { position: relative; width: min(350px, 88vw); text-align: center; animation: float 4s ease-in-out infinite; }
+.eyebrow { margin-bottom: 22px; font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: #8d9bb1; }
+.envelope { position: relative; height: 225px; perspective: 1000px; cursor: pointer; isolation: isolate; border: 1px solid rgba(255,255,255,.95); border-radius: 25px; background: linear-gradient(140deg, rgba(255,255,255,.88), rgba(211,233,255,.72) 48%, rgba(255,222,238,.82)); box-shadow: 0 28px 80px rgba(116,151,194,.17), inset 0 1px 0 #fff; transition: transform .45s ease, box-shadow .45s ease; }
+.envelope:hover { transform: translateY(-5px); box-shadow: 0 35px 90px rgba(116,151,194,.24); }
+.envelope::after { content: ""; position: absolute; inset: 0; z-index: 4; border-radius: inherit; pointer-events: none; background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.48) 48%, transparent 72%); transform: translateX(-120%); animation: shine 5s ease-in-out infinite; }
+@keyframes shine { 0%, 55% { transform: translateX(-120%); } 82%, 100% { transform: translateX(120%); } }
+.envelope-back { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; }
+.envelope-letter { position: absolute; left: 9%; right: 9%; bottom: 12%; height: 68%; display: grid; place-items: center; border-radius: 15px; background: rgba(255,255,255,.94); box-shadow: 0 5px 20px rgba(104,133,174,.12); transition: transform 1s cubic-bezier(.2,.75,.2,1); }
+.envelope-letter span { font-family: "Playfair Display", serif; font-size: 28px; color: #e5a0c3; }
+.envelope-front { position: absolute; inset: 0; z-index: 2; overflow: hidden; border-radius: inherit; background: linear-gradient(145deg, rgba(231,243,255,.75), rgba(255,222,238,.64)); clip-path: polygon(0 35%, 50% 77%, 100% 35%, 100% 100%, 0 100%); }
+.envelope-flap { position: absolute; inset: 0 0 auto; height: 59%; z-index: 3; transform-origin: top center; background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(184,219,255,.92) 58%, rgba(255,215,234,.94)); clip-path: polygon(0 0, 100% 0, 50% 100%); transition: transform .9s cubic-bezier(.2,.75,.2,1); backface-visibility: visible; }
+.heart-seal { position: absolute; left: 50%; top: 55%; z-index: 5; width: 59px; height: 59px; display: grid; place-items: center; transform: translate(-50%, -50%); border: 1px solid rgba(255,255,255,.9); border-radius: 50%; color: white; font-size: 28px; background: linear-gradient(140deg, #a7d7ff, #f1b5d4); box-shadow: 0 8px 25px rgba(176,157,203,.28); transition: opacity .3s ease, transform .5s ease; }
+.envelope.open .envelope-flap { transform: rotateX(180deg); }
+.envelope.open .envelope-letter { transform: translateY(-40px); }
+.envelope.open .heart-seal { opacity: 0; transform: translate(-50%, -50%) scale(.5); }
+.intro-title { margin: 28px 0 8px; font-family: "Playfair Display", serif; font-size: clamp(38px, 10vw, 49px); font-weight: 400; letter-spacing: -.045em; color: #384258; }
+.intro-subtitle { margin: 0 auto; max-width: 290px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.click-hint { margin-top: 25px; font-size: 11px; letter-spacing: .08em; color: #929eb2; animation: hintPulse 2s ease-in-out infinite; }
+@keyframes hintPulse { 50% { opacity: .48; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+
+#main-screen { position: relative; z-index: 1; width: min(700px, calc(100% - 32px)); margin: 0 auto; padding: 65px 0 35px; opacity: 0; transform: translateY(25px); transition: opacity 1.2s ease, transform 1.2s ease; }
+#main-screen.visible { opacity: 1; transform: translateY(0); }
+.topline { text-align: center; margin-bottom: 18px; color: #919db2; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; }
+.hero { text-align: center; margin-bottom: 36px; }
+.hero h1 { margin: 0; font-family: "Playfair Display", serif; font-size: clamp(43px, 10vw, 70px); font-weight: 400; line-height: 1.1; letter-spacing: -.05em; }
+.gradient-text { background: linear-gradient(100deg, #78b8ed, #e9a1c4); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-description { max-width: 430px; margin: 20px auto 0; color: var(--muted); font-size: 14px; line-height: 1.9; padding: 0 8px; }
+.glass { background: var(--glass); border: 1px solid var(--border); border-radius: 26px; box-shadow: 0 18px 55px rgba(100,128,170,.09); backdrop-filter: blur(20px); }
+
+.photo-container { position: relative; width: 100%; overflow: hidden; margin: 0 0 20px; border-radius: 25px; background: linear-gradient(135deg, #d9ebff, #ffe0ed); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 18px 45px rgba(100,128,170,.12); }
+.photo-container img { display: block; width: 100%; height: auto; max-height: 720px; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.photo-container:hover img { transform: scale(1.025); }
+.meme-container { margin-top: 24px; }
+.meme-container img { display: block; width: 100%; height: auto; max-height: 580px; object-fit: cover; border-radius: 24px; }
+
+.poem { padding: clamp(24px, 6vw, 48px); margin-top: 25px; }
+.section-label { margin-bottom: 20px; text-align: center; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: #98a3b7; }
+.poem h2 { margin: 0 0 29px; text-align: center; font-family: "Playfair Display", serif; font-weight: 400; font-size: clamp(28px, 6vw, 35px); }
+.poem p { margin: 0 0 21px; color: #596479; font-family: "Playfair Display", serif; font-size: clamp(16px, 4vw, 19px); line-height: 1.95; font-weight: 400; opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease; }
+.poem p.visible { opacity: 1; transform: translateY(0); }
+.poem p:last-child { margin-bottom: 0; }
+.hidden-51 { position: relative; display: inline-block; color: #78aee0; }
+.hidden-51::after { content: "51"; position: absolute; top: -9px; right: -14px; font-family: "DM Sans", sans-serif; font-size: 9px; color: #e6a1c5; opacity: .8; }
+.poem-divider { display: flex; align-items: center; gap: 14px; margin: 30px 0 0; color: #e6a5c5; }
+.poem-divider::before, .poem-divider::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #dbe3f0, transparent); }
+
+.surprise-card { padding: 32px 24px; margin-top: 25px; text-align: center; }
+.surprise-card h2 { margin: 0 0 10px; font-family: "Playfair Display", serif; font-size: 29px; font-weight: 400; }
+.surprise-description { margin: 0 auto; max-width: 330px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.surprise-btn { display: block; width: 100%; margin-top: 24px; padding: 16px 20px; border: 1px solid rgba(255,255,255,.8); border-radius: 17px; color: white; background: linear-gradient(105deg, #91c9f5, #e7a6c8); box-shadow: 0 12px 28px rgba(168,157,205,.23); cursor: pointer; font-size: 15px; font-weight: 600; transition: transform .25s ease, box-shadow .25s ease; }
+.surprise-btn:hover { transform: translateY(-2px); box-shadow: 0 17px 35px rgba(168,157,205,.3); }
+.surprise-text { display: block; }
+.surprise-text.pop { animation: popIn .4s ease; }
+@keyframes popIn { from { opacity: 0; transform: translateY(8px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+.murmansk-card { margin-top: 25px; padding: 30px 20px; text-align: center; }
+.coordinates { color: #96a5ba; font-size: 10px; letter-spacing: .2em; }
+.murmansk-card h2 { margin: 13px 0 9px; font-family: "Playfair Display", serif; font-weight: 400; font-size: 29px; }
+.murmansk-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.9; }
+.footer-easter-egg { padding: 38px 0 10px; text-align: center; color: #a1aabd; font-size: 12px; }
+.footer-heart { color: #e6a1c4; }
+
+.music-section { margin-top: 25px; padding: 32px 24px; text-align: center; }
+.music-section h2 { margin: 0 0 12px; font-family: "Playfair Display", serif; font-size: 30px; font-weight: 400; }
+.music-section p.subtitle { color: var(--muted); font-size: 13px; line-height: 1.8; margin-bottom: 20px; }
+.music-button { display: block; width: 100%; margin-top: 20px; padding: 16px; border: 1px solid rgba(255,255,255,.8); border-radius: 17px; color: white; background: linear-gradient(105deg, #91c9f5, #e7a6c8); box-shadow: 0 12px 28px rgba(168,157,205,.23); cursor: pointer; font-size: 15px; font-weight: 600; transition: transform .25s ease, box-shadow .25s ease; }
+.music-button:hover { transform: translateY(-2px); box-shadow: 0 17px 35px rgba(168,157,205,.3); }
+.music-player { margin-top: 20px; display: none; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.music-player.visible { display: block; }
+.music-player iframe { width: 100%; height: 166px; border: 0; }
+.music-link { display: inline-block; margin-top: 15px; color: #8791a5; font-size: 12px; text-decoration: none; border-bottom: 1px solid rgba(135, 145, 165, 0.3); transition: color 0.3s; }
+.music-link:hover { color: #e6a1c4; }
+
+@media (max-width: 480px) {
+    #main-screen { width: calc(100% - 28px); padding-top: 45px; }
+    .envelope { height: 205px; }
+    .poem { border-radius: 23px; }
+    .photo-container, .meme-container img { border-radius: 20px; }
+}
+</style>
+</head>
+<body>
+
+<a href="#" class="back-btn-romantic" onclick="event.preventDefault(); window.parent.postMessage('backToFormaRomantic', '*');">← На Forma</a>
+
+<div class="ambient" aria-hidden="true">
+    <div class="orb orb-blue"></div>
+    <div class="orb orb-pink"></div>
+    <div class="orb orb-lilac"></div>
+</div>
+
+<canvas id="particles" aria-hidden="true"></canvas>
+
+<section id="envelope-screen">
+    <div class="envelope-wrap">
+        <div class="eyebrow">a little letter for you</div>
+        <div class="envelope" id="envelope" role="button" tabindex="0">
+            <div class="envelope-back">
+                <div class="envelope-letter">
+                    <span>Для тебя ♡</span>
+                </div>
+            </div>
+            <div class="envelope-front"></div>
+            <div class="envelope-flap"></div>
+            <div class="heart-seal">♡</div>
+        </div>
+        <h1 class="intro-title">Ты моя любимая</h1>
+        <p class="intro-subtitle">
+            Маленькое письмо для самого тёплого человека в моей жизни.
+        </p>
+        <div class="click-hint">✧ &nbsp; нажми, чтобы открыть &nbsp; ✧</div>
+    </div>
+</section>
+
+<main id="main-screen">
+    <div class="topline">made with love · just for you</div>
+    <header class="hero">
+        <h1>
+            Ты моя<br>
+            <span class="gradient-text">любимая</span>
+        </h1>
+        <p class="hero-description">
+            Среди миллионов людей мне повезло встретить именно тебя.
+            И если бы можно было выбрать ещё раз — я бы снова выбрал тебя.
+        </p>
+    </header>
+
+    <div class="photo-container">
+        <img src="https://i.postimg.cc/QxmVVwkK/0B9RIZhj3Uk.jpg" alt="Наше фото" fetchpriority="high">
+    </div>
+
+    <section class="glass poem">
+        <div class="section-label">a letter from my heart</div>
+        <h2>Для тебя ♡</h2>
+        <p>Я помню чудное мгновенье:</p>
+        <p>Передо мной явилась ты,</p>
+        <p>Как мимолетное виденье,</p>
+        <p>Как гений чистой красоты.</p>
+        <p>В томленьях грусти безнадежной,</p>
+        <p>В тревогах шумной суеты,</p>
+        <p>Звучал мне долго голос нежный</p>
+        <p>И снились милые черты.</p>
+        <p>Пусть за окном метут метели,</p>
+        <p>И холодно в краях <span class="hidden-51">Мурманска</span>,</p>
+        <p>Но с тобой мы всегда в тепле,</p>
+        <p>Ведь ты — моя вселенная и красота.</p>
+        <div class="poem-divider">♡</div>
+    </section>
+
+    <section class="glass surprise-card">
+        <div class="section-label">one little secret</div>
+        <h2>Маленький сюрприз</h2>
+        <p class="surprise-description">
+            Иногда самые простые слова — самые важные.
+            Нажми и получи одно из моих напоминаний для тебя.
+        </p>
+        <button class="surprise-btn" id="surprise-btn" type="button">
+            <span class="surprise-text" id="surprise-text">
+                Нажми, если хочешь узнать секрет 💖
+            </span>
+        </button>
+    </section>
+
+    <section class="glass music-section">
+        <div class="section-label">just for us ♡</div>
+        <h2>Наша песня</h2>
+        <p class="subtitle">
+            Включи её и просто слушай. ❤️
+        </p>
+        <button class="music-button" id="music-btn" type="button">
+            ♫ Слушать наш трек ♡
+        </button>
+        <div class="music-player" id="music-player">
+            <iframe id="music-iframe" title="Наша песня в Яндекс Музыке" allow="autoplay; encrypted-media" loading="lazy"></iframe>
+        </div>
+        <a class="music-link" href="https://music.yandex.ru/album/30218108/track/119698535" target="_blank" rel="noopener noreferrer">
+            Открыть трек в Яндекс Музыке ↗
+        </a>
+    </section>
+
+    <div class="photo-container meme-container">
+        <img src="https://i.postimg.cc/9Qf09bJx/57bcbe7ac6aa03f18316156181e2c00c.jpg" alt="Мурманск 51" loading="lazy">
+    </div>
+
+    <section class="glass murmansk-card">
+        <div class="coordinates">68°58′ N · 33°05′ E</div>
+        <h2>51° · Мурманск</h2>
+        <p>
+            Холодный город Мурманск...<br>
+            Но воспоминания о тебе согревают даже там.
+        </p>
+    </section>
+
+    <footer class="footer-easter-egg">
+        сделано с <span class="footer-heart">♡</span> специально для тебя
+    </footer>
+</main>
+
+<script>
+(() => {
+    const envelopeScreen = document.getElementById("envelope-screen");
+    const envelope = document.getElementById("envelope");
+    const mainScreen = document.getElementById("main-screen");
+    let opened = false;
+
+    function openEnvelope() {
+        if (opened) return;
+        opened = true;
+        envelope.classList.add("open");
+        burst(window.innerWidth / 2, window.innerHeight / 2, 55);
+        setTimeout(() => {
+            envelopeScreen.classList.add("fade-out");
+            mainScreen.classList.add("visible");
+            document.body.style.overflowY = "auto";
+            revealPoem();
+        }, 650);
+    }
+    envelope.addEventListener("click", openEnvelope);
+    envelope.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openEnvelope();
+        }
+    });
+
+    function revealPoem() {
+        const paragraphs = document.querySelectorAll(".poem p");
+        if (!("IntersectionObserver" in window)) {
+            paragraphs.forEach(p => p.classList.add("visible"));
+            return;
+        }
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        paragraphs.forEach(p => observer.observe(p));
+    }
+
+    const surprises = [
+        "Ты самая красивая на свете! 😍",
+        "Я люблю твою улыбку! 🥰",
+        "Ты мой самый любимый человек! ❤️",
+        "С тобой каждый день как праздник! 🎉",
+        "Ты — мое самое большое счастье! ✨",
+        "Я скучаю по тебе каждую секунду! 🥺",
+        "Ты самая умная и заботливая! 🌸",
+        "Я хочу быть с тобой всегда! 💍"
+    ];
+    const surpriseBtn = document.getElementById("surprise-btn");
+    const surpriseText = document.getElementById("surprise-text");
+    let previousSurprise = -1;
+
+    surpriseBtn.addEventListener("click", () => {
+        let index;
+        do {
+            index = Math.floor(Math.random() * surprises.length);
+        } while (surprises.length > 1 && index === previousSurprise);
+        previousSurprise = index;
+        surpriseText.classList.remove("pop");
+        void surpriseText.offsetWidth;
+        surpriseText.textContent = surprises[index];
+        surpriseText.classList.add("pop");
+        const rect = surpriseBtn.getBoundingClientRect();
+        burst(rect.left + rect.width / 2, rect.top + rect.height / 2, 24);
+    });
+
+    const musicBtn = document.getElementById("music-btn");
+    const musicPlayer = document.getElementById("music-player");
+    const musicIframe = document.getElementById("music-iframe");
+
+    musicBtn.addEventListener("click", () => {
+        if (!musicIframe.src || musicIframe.src === window.location.href) {
+            musicIframe.src = "https://music.yandex.ru/iframe/#track/119698535";
+        }
+        musicPlayer.classList.add("visible");
+        musicBtn.textContent = "♡ Наша песня играет ♡";
+        musicPlayer.scrollIntoView({ behavior: "smooth", block: "center" });
+        burst(window.innerWidth / 2, window.innerHeight / 2, 35);
+    });
+
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    let width = 0, height = 0, particles = [];
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function resizeCanvas() {
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * ratio;
+        canvas.height = height * ratio;
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function burst(x, y, count = 12) {
+        if (reduceMotion) return;
+        for (let i = 0; i < count; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = .5 + Math.random() * 2.4;
+            particles.push({
+                x, y,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed - .5,
+                life: 1,
+                size: 1.5 + Math.random() * 3,
+                hue: Math.random() > .5 ? 205 : 333
+            });
+        }
+        if (particles.length > 350) particles = particles.slice(-350);
+    }
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, width, height);
+        particles = particles.filter(p => p.life > .025);
+        for (const p of particles) {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += .012;
+            p.vx *= .99;
+            p.life *= .975;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+            ctx.fillStyle = `hsla(${p.hue}, 75%, 78%, ${p.life * .8})`;
+            ctx.fill();
+        }
+        requestAnimationFrame(animateParticles);
+    }
+    if (!reduceMotion) animateParticles();
+})();
+</script>
+</body>
+</html>
+</script>
+
+<!-- ========================================== -->
+<!-- ШАБЛОН: ПОРТФОЛИО НИКИТЫ -->
+<!-- ========================================== -->
 <script type="text/html" id="portfolio-template">
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101010">
 <title>Никита — личное портфолио</title>
 <style>
 :root{--bg:#101010;--panel:#181818;--text:#f4f1eb;--muted:#a6a39e;--accent:#d5ff3f;--line:rgba(255,255,255,.12);}
@@ -470,7 +1334,7 @@ footer{padding:25px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 <header>
   <div class="container nav">
     <div class="nav-left">
-      <a href="index.html" class="back-btn">← На Forma</a>
+      <a href="#" class="back-btn" onclick="event.preventDefault(); window.parent.postMessage('backToFormaPortfolio', '*');">← На Forma</a>
       <a class="brand" href="#home">NIKITA<span>.</span></a>
     </div>
     <nav class="navlinks" id="navlinks">
@@ -661,9 +1525,12 @@ navlinks.querySelectorAll('a').forEach(function(link){
 </html>
 </script>
 
+<!-- ========================================== -->
+<!-- ГЛАВНЫЙ СКРИПТ УПРАВЛЕНИЯ -->
+<!-- ========================================== -->
 <script>
-/* ========== СКРИПТЫ FORMA ========== */
 (function(){
+  // Фильтры и модалки Forma
   const filters = document.querySelectorAll('.filter');
   const cards = document.querySelectorAll('.project');
   const empty = document.getElementById('empty');
@@ -685,7 +1552,6 @@ navlinks.querySelectorAll('a').forEach(function(link){
   const modal = document.getElementById('modal');
   const close = document.getElementById('closeModal');
 
-  // Ищем только кнопки, чтобы ссылка "Посмотреть пример" работала как обычная ссылка
   document.querySelectorAll('button.more').forEach(function(button){
     button.addEventListener('click', function(){
       const card = button.closest('.project');
@@ -711,36 +1577,63 @@ navlinks.querySelectorAll('a').forEach(function(link){
   });
 })();
 
-/* ========== ЛОГИКА ПЕРЕКЛЮЧЕНИЯ НА ПОРТФОЛИО ========== */
-function openPortfolio() {
-  const iframe = document.getElementById('portfolio-iframe');
-  
-  // Загружаем HTML портфолио в iframe (только один раз)
+// Открытие Романтического сайта
+function openRomantic() {
+  const iframe = document.getElementById('romantic-iframe');
   if (!iframe.srcdoc) {
-    let html = document.getElementById('portfolio-template').innerHTML;
-    
-    // Меняем кнопку "Назад", чтобы она отправляла сообщение родительскому окну
-    html = html.replace(
-      '<a href="index.html" class="back-btn">← На Forma</a>',
-      '<a href="#" class="back-btn" onclick="event.preventDefault(); window.parent.postMessage(\'backToForma\', \'*\');">← На Forma</a>'
-    );
-    
+    let html = document.getElementById('romantic-template').innerHTML;
     iframe.srcdoc = html;
   }
-  
-  // Прячем каталог, показываем портфолио
   document.getElementById('forma-site').style.display = 'none';
-  document.getElementById('portfolio-site').style.display = 'block';
-  document.body.style.overflow = 'hidden'; // Отключаем скролл фона
+  document.getElementById('romantic-site').style.display = 'block';
+  document.body.style.overflow = 'hidden';
   window.scrollTo(0, 0);
 }
 
-// Слушаем кнопку "Назад" из iframe
+// Открытие Свадебного сайта
+function openWedding() {
+  const iframe = document.getElementById('wedding-iframe');
+  if (!iframe.srcdoc) {
+    let html = document.getElementById('wedding-template').innerHTML;
+    iframe.srcdoc = html;
+  }
+  document.getElementById('forma-site').style.display = 'none';
+  document.getElementById('wedding-site').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  window.scrollTo(0, 0);
+}
+
+// Открытие Портфолио Никиты
+function openPortfolio() {
+  const iframe = document.getElementById('portfolio-iframe');
+  if (!iframe.srcdoc) {
+    let html = document.getElementById('portfolio-template').innerHTML;
+    iframe.srcdoc = html;
+  }
+  document.getElementById('forma-site').style.display = 'none';
+  document.getElementById('portfolio-site').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  window.scrollTo(0, 0);
+}
+
+// Обработка кнопок "Назад"
 window.addEventListener('message', function(e) {
-  if (e.data === 'backToForma') {
+  if (e.data === 'backToFormaRomantic') {
+    document.getElementById('romantic-site').style.display = 'none';
+    document.getElementById('forma-site').style.display = 'block';
+    document.body.style.overflow = '';
+    window.scrollTo(0, 0);
+  }
+  if (e.data === 'backToFormaWedding') {
+    document.getElementById('wedding-site').style.display = 'none';
+    document.getElementById('forma-site').style.display = 'block';
+    document.body.style.overflow = '';
+    window.scrollTo(0, 0);
+  }
+  if (e.data === 'backToFormaPortfolio') {
     document.getElementById('portfolio-site').style.display = 'none';
     document.getElementById('forma-site').style.display = 'block';
-    document.body.style.overflow = ''; // Возвращаем скролл
+    document.body.style.overflow = '';
     window.scrollTo(0, 0);
   }
 });
